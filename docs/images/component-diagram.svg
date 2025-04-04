@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#333" />
+    </marker>
+  </defs>
+  
+  <!-- 배경 -->
+  <rect width="800" height="600" fill="#f8f9fa" />
+  
+  <!-- 제목 -->
+  <text x="400" y="40" font-family="Arial" font-size="24" text-anchor="middle" font-weight="bold">TODO 애플리케이션 컴포넌트 구조</text>
+  
+  <!-- App 컴포넌트 -->
+  <rect x="350" y="70" width="100" height="50" rx="5" ry="5" fill="#e1bee7" stroke="#8e24aa" stroke-width="2" />
+  <text x="400" y="100" font-family="Arial" font-size="16" text-anchor="middle" font-weight="bold">App</text>
+  
+  <!-- 프로바이더 컴포넌트 -->
+  <rect x="150" y="150" width="120" height="50" rx="5" ry="5" fill="#bbdefb" stroke="#1976d2" stroke-width="2" />
+  <text x="210" y="180" font-family="Arial" font-size="16" text-anchor="middle">AuthProvider</text>
+  
+  <rect x="300" y="150" width="120" height="50" rx="5" ry="5" fill="#bbdefb" stroke="#1976d2" stroke-width="2" />
+  <text x="360" y="180" font-family="Arial" font-size="16" text-anchor="middle">ThemeProvider</text>
+  
+  <rect x="450" y="150" width="120" height="50" rx="5" ry="5" fill="#bbdefb" stroke="#1976d2" stroke-width="2" />
+  <text x="510" y="180" font-family="Arial" font-size="16" text-anchor="middle">TodoProvider</text>
+  
+  <rect x="600" y="150" width="120" height="50" rx="5" ry="5" fill="#bbdefb" stroke="#1976d2" stroke-width="2" />
+  <text x="660" y="180" font-family="Arial" font-size="16" text-anchor="middle">Router</text>
+  
+  <!-- 페이지 컴포넌트 -->
+  <rect x="150" y="230" width="120" height="50" rx="5" ry="5" fill="#c8e6c9" stroke="#388e3c" stroke-width="2" />
+  <text x="210" y="260" font-family="Arial" font-size="16" text-anchor="middle">LoginPage</text>
+  
+  <rect x="300" y="230" width="120" height="50" rx="5" ry="5" fill="#c8e6c9" stroke="#388e3c" stroke-width="2" />
+  <text x="360" y="260" font-family="Arial" font-size="16" text-anchor="middle">RegisterPage</text>
+  
+  <rect x="450" y="230" width="120" height="50" rx="5" ry="5" fill="#c8e6c9" stroke="#388e3c" stroke-width="2" />
+  <text x="510" y="260" font-family="Arial" font-size="16" text-anchor="middle">TodoPage</text>
+  
+  <!-- Todo 페이지 컴포넌트 -->
+  <rect x="150" y="310" width="120" height="50" rx="5" ry="5" fill="#ffecb3" stroke="#ffa000" stroke-width="2" />
+  <text x="210" y="340" font-family="Arial" font-size="16" text-anchor="middle">TodoHeader</text>
+  
+  <rect x="300" y="310" width="120" height="50" rx="5" ry="5" fill="#ffecb3" stroke="#ffa000" stroke-width="2" />
+  <text x="360" y="340" font-family="Arial" font-size="16" text-anchor="middle">TodoList</text>
+  
+  <rect x="450" y="310" width="120" height="50" rx="5" ry="5" fill="#ffecb3" stroke="#ffa000" stroke-width="2" />
+  <text x="510" y="340" font-family="Arial" font-size="16" text-anchor="middle">TodoForm</text>
+  
+  <rect x="600" y="310" width="120" height="50" rx="5" ry="5" fill="#ffecb3" stroke="#ffa000" stroke-width="2" />
+  <text x="660" y="340" font-family="Arial" font-size="16" text-anchor="middle">TodoFilter</text>
+  
+  <!-- Todo 아이템 컴포넌트 -->
+  <rect x="300" y="390" width="120" height="50" rx="5" ry="5" fill="#ffcdd2" stroke="#d32f2f" stroke-width="2" />
+  <text x="360" y="420" font-family="Arial" font-size="16" text-anchor="middle">TodoItem</text>
+  
+  <!-- 커스텀 훅 -->
+  <rect x="80" y="470" width="640" height="100" rx="5" ry="5" fill="#f5f5f5" stroke="#9e9e9e" stroke-width="2" />
+  <text x="400" y="495" font-family="Arial" font-size="16" text-anchor="middle" font-weight="bold">커스텀 훅</text>
+  
+  <rect x="100" y="510" width="140" height="40" rx="3" ry="3" fill="#e0e0e0" stroke="#616161" stroke-width="1" />
+  <text x="170" y="535" font-family="Arial" font-size="14" text-anchor="middle">useTodoState</text>
+  
+  <rect x="260" y="510" width="140" height="40" rx="3" ry="3" fill="#e0e0e0" stroke="#616161" stroke-width="1" />
+  <text x="330" y="535" font-family="Arial" font-size="14" text-anchor="middle">useTodoActions</text>
+  
+  <rect x="420" y="510" width="140" height="40" rx="3" ry="3" fill="#e0e0e0" stroke="#616161" stroke-width="1" />
+  <text x="490" y="535" font-family="Arial" font-size="14" text-anchor="middle">useTheme</text>
+  
+  <rect x="580" y="510" width="140" height="40" rx="3" ry="3" fill="#e0e0e0" stroke="#616161" stroke-width="1" />
+  <text x="650" y="535" font-family="Arial" font-size="14" text-anchor="middle">useAuth</text>
+  
+  <!-- 연결선 -->
+  <!-- App -> Providers -->
+  <line x1="400" y1="120" x2="210" y2="150" stroke="#333" stroke-width="1.5" marker-end="url(#arrowhead)" />
+  <line x1="400" y1="120" x2="360" y2="150" stroke="#333" stroke-width="1.5" marker-end="url(#arrowhead)" />
+  <line x1="400" y1="120" x2="510" y2="150" stroke="#333" stroke-width="1.5" marker-end="url(#arrowhead)" />
+  <line x1="400" y1="120" x2="660" y2="150" stroke="#333" stroke-width="1.5" marker-end="url(#arrowhead)" />
+  
+  <!-- Router -> Pages -->
+  <line x1="660" y1="200" x2="210" y2="230" stroke="#333" stroke-width="1.5" marker-end="url(#arrowhead)" />
+  <line x1="660" y1="200" x2="360" y2="230" stroke="#333" stroke-width="1.5" marker-end="url(#arrowhead)" />
+  <line x1="660" y1="200" x2="510" y2="230" stroke="#333" stroke-width="1.5" marker-end="url(#arrowhead)" />
+  
+  <!-- TodoPage -> Todo Components -->
+  <line x1="510" y1="280" x2="210" y2="310" stroke="#333" stroke-width="1.5" marker-end="url(#arrowhead)" />
+  <line x1="510" y1="280" x2="360" y2="310" stroke="#333" stroke-width="1.5" marker-end="url(#arrowhead)" />
+  <line x1="510" y1="280" x2="510" y2="310" stroke="#333" stroke-width="1.5" marker-end="url(#arrowhead)" />
+  <line x1="510" y1="280" x2="660" y2="310" stroke="#333" stroke-width="1.5" marker-end="url(#arrowhead)" />
+  
+  <!-- TodoList -> TodoItem -->
+  <line x1="360" y1="360" x2="360" y2="390" stroke="#333" stroke-width="1.5" marker-end="url(#arrowhead)" />
+  
+  <!-- 범례 -->
+  <rect x="80" y="40" width="15" height="15" fill="#e1bee7" stroke="#8e24aa" stroke-width="1" />
+  <text x="105" y="52" font-family="Arial" font-size="12" text-anchor="start">앱 루트</text>
+  
+  <rect x="80" y="60" width="15" height="15" fill="#bbdefb" stroke="#1976d2" stroke-width="1" />
+  <text x="105" y="72" font-family="Arial" font-size="12" text-anchor="start">프로바이더</text>
+  
+  <rect x="80" y="80" width="15" height="15" fill="#c8e6c9" stroke="#388e3c" stroke-width="1" />
+  <text x="105" y="92" font-family="Arial" font-size="12" text-anchor="start">페이지</text>
+  
+  <rect x="80" y="100" width="15" height="15" fill="#ffecb3" stroke="#ffa000" stroke-width="1" />
+  <text x="105" y="112" font-family="Arial" font-size="12" text-anchor="start">Todo 컴포넌트</text>
+  
+  <rect x="80" y="120" width="15" height="15" fill="#ffcdd2" stroke="#d32f2f" stroke-width="1" />
+  <text x="105" y="132" font-family="Arial" font-size="12" text-anchor="start">Todo 아이템</text>
+</svg>

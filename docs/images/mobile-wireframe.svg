@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="400" height="700" xmlns="http://www.w3.org/2000/svg">
+  <!-- 배경 -->
+  <rect width="400" height="700" fill="#f8f9fa" />
+  
+  <!-- 모바일 디바이스 프레임 -->
+  <rect x="50" y="50" width="300" height="600" rx="20" ry="20" fill="#fff" stroke="#ddd" stroke-width="2" />
+  
+  <!-- 상태 표시줄 -->
+  <rect x="50" y="50" width="300" height="30" rx="20" ry="20" fill="#f5f5f5" stroke="#ddd" stroke-width="2" />
+  <circle cx="65" cy="65" r="5" fill="#333" />
+  <text x="330" y="70" font-family="Arial" font-size="14" text-anchor="end" fill="#333">9:41</text>
+  
+  <!-- 앱 헤더 -->
+  <rect x="50" y="80" width="300" height="60" fill="#4a90e2" />
+  <text x="70" y="120" font-family="Arial" font-size="22" font-weight="bold" fill="#fff">TODO APP</text>
+  
+  <!-- 다크 모드 토글 -->
+  <circle cx="320" cy="110" r="15" fill="#fff" stroke="#333" stroke-width="1" />
+  <text x="320" y="116" font-family="Arial" font-size="16" text-anchor="middle" fill="#333">🌙</text>
+  
+  <!-- 새 할일 입력 영역 -->
+  <rect x="60" y="150" width="280" height="50" rx="5" ry="5" fill="#fff" stroke="#ddd" stroke-width="1" />
+  <text x="80" y="180" font-family="Arial" font-size="16" fill="#999">✏️ 새 할일 추가</text>
+  
+  <!-- 할일 목록 -->
+  <!-- 할일 1 -->
+  <rect x="60" y="210" width="280" height="70" rx="5" ry="5" fill="#fff" stroke="#ddd" stroke-width="1" />
+  <rect x="75" y="230" width="20" height="20" rx="3" ry="3" fill="#fff" stroke="#333" stroke-width="1" />
+  <text x="110" y="245" font-family="Arial" font-size="16" fill="#333">할일 1</text>
+  <rect x="75" y="255" width="80" height="16" rx="8" ry="8" fill="#ff6b6b" />
+  <text x="115" y="268" font-family="Arial" font-size="12" fill="#fff">높음</text>
+  
+  <!-- 할일 2 -->
+  <rect x="60" y="290" width="280" height="70" rx="5" ry="5" fill="#fff" stroke="#ddd" stroke-width="1" />
+  <rect x="75" y="310" width="20" height="20" rx="3" ry="3" fill="#fff" stroke="#333" stroke-width="1" />
+  <path d="M78 320 L85 327 L93 313" stroke="#333" stroke-width="2" fill="none" />
+  <text x="110" y="325" font-family="Arial" font-size="16" fill="#333" text-decoration="line-through" fill-opacity="0.5">할일 2</text>
+  <rect x="75" y="335" width="80" height="16" rx="8" ry="8" fill="#feca57" />
+  <text x="115" y="348" font-family="Arial" font-size="12" fill="#fff">중간</text>
+  
+  <!-- 할일 3 -->
+  <rect x="60" y="370" width="280" height="70" rx="5" ry="5" fill="#fff" stroke="#ddd" stroke-width="1" />
+  <rect x="75" y="390" width="20" height="20" rx="3" ry="3" fill="#fff" stroke="#333" stroke-width="1" />
+  <text x="110" y="405" font-family="Arial" font-size="16" fill="#333">할일 3</text>
+  <rect x="75" y="415" width="80" height="16" rx="8" ry="8" fill="#54a0ff" />
+  <text x="115" y="428" font-family="Arial" font-size="12" fill="#fff">낮음</text>
+  
+  <!-- 필터 영역 -->
+  <rect x="60" y="450" width="280" height="50" rx="5" ry="5" fill="#f9f9f9" stroke="#ddd" stroke-width="1" />
+  <text x="80" y="480" font-family="Arial" font-size="16" fill="#333">필터: 모두 보기</text>
+  <text x="320" y="480" font-family="Arial" font-size="16" text-anchor="end" fill="#333">▼</text>
+  
+  <!-- 하단 네비게이션 -->
+  <rect x="50" y="610" width="300" height="40" fill="#f5f5f5" />
+  <line x1="50" y1="610" x2="350" y2="610" stroke="#ddd" stroke-width="1" />
+  
+  <!-- 홈 버튼 -->
+  <circle cx="110" cy="630" r="15" fill="#4a90e2" />
+  <text x="110" y="635" font-family="Arial" font-size="14" text-anchor="middle" fill="#fff">🏠</text>
+  
+  <!-- 프로필 버튼 -->
+  <circle cx="200" cy="630" r="15" fill="#f5f5f5" stroke="#ddd" stroke-width="1" />
+  <text x="200" y="635" font-family="Arial" font-size="14" text-anchor="middle" fill="#333">👤</text>
+  
+  <!-- 설정 버튼 -->
+  <circle cx="290" cy="630" r="15" fill="#f5f5f5" stroke="#ddd" stroke-width="1" />
+  <text x="290" y="635" font-family="Arial" font-size="14" text-anchor="middle" fill="#333">⚙️</text>
+</svg>
