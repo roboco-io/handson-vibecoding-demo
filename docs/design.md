@@ -19,6 +19,8 @@
 
 ### 2.1 컴포넌트 구조
 
+Mantine UI Kit 기반으로 컴포넌트를 설계합니다. Mantine의 Card, Checkbox, Select, TextInput, Button, AppShell, Notification 등 주요 컴포넌트를 적극 활용하여 모던하고 일관된 UI/UX를 구현합니다.
+
 ![컴포넌트 구조 다이어그램](./images/component-diagram.svg)
 
 ### 2.2 디렉토리 구조
@@ -281,6 +283,9 @@ sequenceDiagram
 2. 직관적인 사용자 인터페이스
 3. 접근성 고려 (WCAG 2.1 AA 수준)
 4. 다크 모드/라이트 모드 지원
+5. Mantine의 디자인 시스템을 따르며, 일관된 컬러/타이포그래피/컴포넌트 스타일을 유지
+6. 반응형 레이아웃(Mantine의 Grid, Flex 등 활용)
+7. Notification, Modal 등 Mantine의 고급 컴포넌트 적극 사용
 
 ### 5.2 와이어프레임
 
@@ -312,7 +317,7 @@ sequenceDiagram
 
 ### 7.1 1단계: 프론트엔드 초기 구현 (로컬 스토리지)
 
-1. 프로젝트 설정 (React + Vite + TypeScript)
+1. 프로젝트 설정 (React + Vite + TypeScript + Mantine)
 2. 기본 UI 컴포넌트 구현
 3. 상태 관리 구현 (Context API + useReducer)
 4. 로컬 스토리지 통합
