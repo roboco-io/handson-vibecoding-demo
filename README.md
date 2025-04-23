@@ -9,6 +9,7 @@
 - **공통 모듈(shared)**: 타입, 상수, 유틸리티 등 패키지간 코드 재사용
 - **인프라(infrastructure)**: AWS CDK 기반 IaC, CI/CD 자동화
 - **문서화(docs)**: 요구사항, 설계, 체크리스트 등 체계적 관리
+- **자동화(Git Hooks)**: 프론트엔드 실행 코드(js/ts/tsx) 변경 커밋 시 lint fix, build, test가 자동 수행됨
 
 ## 디렉토리 구조
 ```

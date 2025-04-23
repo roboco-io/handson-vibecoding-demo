@@ -1,0 +1,13 @@
+# 프론트엔드 실행 코드(js/ts/tsx) 변경시에만 동작
+CHANGED=$(git diff --cached --name-only | grep -E '^frontend/src/.*\.(js|ts|tsx)$')
+if [ -n "$CHANGED" ]; then
+  echo "[husky] lint --fix, build, test를 실행합니다."
+  cd frontend
+  npm run lint -- --fix || exit 1
+  npm run build || exit 1
+  npm test || exit 1
+  cd ..
+else
+  echo "[husky] 실행 코드 변경 없음. 훅 건너뜀."
+  exit 0
+fi

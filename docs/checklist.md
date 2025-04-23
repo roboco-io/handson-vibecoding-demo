@@ -18,6 +18,10 @@
   - [x] ESLint 및 Prettier 설정
   - [x] 기본 디렉토리 구조 생성 (src/, components/, hooks/ 등)
   - **커밋**: "feat: 프론트엔드 개발 환경 및 Mantine 설정"
+  - [x] **1.2.1 프론트엔드 pre-commit hook 자동화**
+    - [x] 실행 코드(js/ts/tsx) 변경 시에만 lint fix, build, test 자동 수행
+    - [x] .husky/pre-commit에 스크립트 적용
+    - **커밋**: "chore(frontend): pre-commit hook으로 실행코드 변경시 lint, build, test 자동화"
 
 - [ ] **1.3 백엔드 프로젝트 설정**
   - [ ] Node.js + TypeScript 프로젝트 초기화 (backend/)

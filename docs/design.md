@@ -376,3 +376,8 @@ sequenceDiagram
 이 설계 문서는 TODO 웹 애플리케이션의 아키텍처, 컴포넌트, 데이터 모델, 테스트 전략 및 구현 계획을 정의합니다. Clean Architecture와 SOLID 원칙을 기반으로 설계되었으며, 확장성과 유지보수성을 고려했습니다.
 
 이 문서는 프로젝트 진행 과정에서 업데이트될 수 있습니다.
+
+## 9. Git Hooks & 자동화
+
+- 프론트엔드 실행 코드(js/ts/tsx) 변경 시 pre-commit hook을 통해 lint fix, build, test가 자동으로 수행됨
+- .husky/pre-commit에 스크립트 적용, 실행 코드 외 변경시에는 훅이 동작하지 않음
