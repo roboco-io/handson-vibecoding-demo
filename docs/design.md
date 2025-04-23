@@ -4,11 +4,20 @@
 
 이 문서는 TODO 웹 애플리케이션의 아키텍처 및 설계 방향을 정의합니다. 이 애플리케이션은 Clean Architecture와 SOLID 원칙을 기반으로 설계되었습니다.
 
-### 1.1 전체 아키텍처
+### 1.1 모노레포 구조
+- 프론트엔드, 백엔드, 공유 모듈, 인프라 코드를 하나의 저장소에서 통합 관리합니다.
+- 예시 디렉토리 구조:
+  - frontend/: React + Mantine 기반 프론트엔드
+  - backend/: Node.js(Typescript) 기반 백엔드
+  - shared/: 공통 타입, 유틸리티, API 인터페이스 등
+  - infrastructure/: AWS CDK 등 인프라 코드
+- 장점: 패키지 간 의존성 관리, 일관된 빌드/테스트, 코드 재사용, 공통 타입 공유, CI/CD 효율화 등
+
+### 1.2 전체 아키텍처
 
 ![전체 아키텍처 다이어그램](./images/architecture-diagram.svg)
 
-### 1.2 개발 단계
+### 1.3 개발 단계
 
 1. **1단계**: 프론트엔드 구현 (로컬 스토리지 사용)
 2. **2단계**: 백엔드 API 구현 (AWS 서버리스)
@@ -26,22 +35,32 @@ Mantine UI Kit 기반으로 컴포넌트를 설계합니다. Mantine의 Card, Ch
 ### 2.2 디렉토리 구조
 
 ```
-src/
-├── assets/            # 이미지, 아이콘 등 정적 자산
-├── components/        # 재사용 가능한 UI 컴포넌트
-│   ├── common/        # 공통 컴포넌트 (버튼, 입력 필드 등)
-│   ├── layout/        # 레이아웃 관련 컴포넌트
-│   └── todo/          # Todo 관련 컴포넌트
-├── contexts/          # React Context API
-├── hooks/             # 커스텀 훅
-├── pages/             # 페이지 컴포넌트
-├── services/          # 외부 서비스 통신 로직
-│   ├── api/           # API 클라이언트
-│   └── storage/       # 로컬 스토리지 관리
-├── types/             # TypeScript 타입 정의
-├── utils/             # 유틸리티 함수
-└── App.tsx            # 애플리케이션 진입점
+root/
+├── frontend/       # 프론트엔드(React + Mantine)
+│   └── src/
+│       ├── assets/            # 이미지, 아이콘 등 정적 자산
+│       ├── components/        # 재사용 가능한 UI 컴포넌트
+│       │   ├── common/        # 공통 컴포넌트 (버튼, 입력 필드 등)
+│       │   ├── layout/        # 레이아웃 관련 컴포넌트
+│       │   └── todo/          # Todo 관련 컴포넌트
+│       ├── contexts/          # React Context API
+│       ├── hooks/             # 커스텀 훅
+│       ├── pages/             # 페이지 컴포넌트
+│       ├── services/          # 외부 서비스 통신 로직
+│       │   ├── api/           # API 클라이언트
+│       │   └── storage/       # 로컬 스토리지 관리
+│       ├── types/             # TypeScript 타입 정의
+│       ├── utils/             # 유틸리티 함수
+│       └── App.tsx            # 애플리케이션 진입점
+├── backend/        # 백엔드(Node.js + TypeScript)
+│   └── src/
+├── shared/         # 타입, 상수, 공통 유틸리티
+├── infrastructure/ # 인프라(AWS CDK)
+├── docs/           # 문서
+└── scripts/        # 유틸리티 스크립트
 ```
+
+- 각 영역은 독립적으로 빌드/테스트 가능하며, 공통 타입은 shared에서 관리합니다.
 
 ### 2.3 상태 관리
 
