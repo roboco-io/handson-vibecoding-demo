@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useReducer, ReactNode } from 'react';
-import { Todo, TodoPriority, TodoStatus, UpdateTodoInput } from '@vibecoding-demo/shared/src/types/todo';
+import { Todo, TodoStatus, UpdateTodoInput } from '@vibecoding-demo/shared/src/types/todo';
 import { v4 as uuidv4 } from 'uuid';
 
 /**

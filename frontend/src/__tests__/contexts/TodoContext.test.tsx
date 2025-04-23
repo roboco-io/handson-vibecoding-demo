@@ -1,7 +1,6 @@
-import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { Todo, TodoPriority, TodoStatus } from '@vibecoding-demo/shared/src/types/todo';
-import { TodoProvider, useTodoState, useTodoDispatch, TodoContext } from '../../contexts/TodoContext';
+import { TodoProvider, useTodoState, useTodoDispatch } from '../../contexts/TodoContext';
 
 // 테스트용 컴포넌트
 const TestComponent = () => {

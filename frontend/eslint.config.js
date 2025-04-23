@@ -1,5 +1,5 @@
 import js from '@eslint/js'
-import globals, { es2025 } from 'globals'
+import globals from 'globals'
 import reactHooks from 'eslint-plugin-react-hooks'
 import reactRefresh from 'eslint-plugin-react-refresh'
 import tseslint from 'typescript-eslint'
@@ -10,7 +10,7 @@ export default tseslint.config(
     extends: [js.configs.recommended, ...tseslint.configs.recommended],
     files: ['**/*.{ts,tsx}'],
     languageOptions: {
-      ecmaVersion: es2025,
+      ecmaVersion: 2025,
       globals: globals.browser,
     },
     plugins: {
