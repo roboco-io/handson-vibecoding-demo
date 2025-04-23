@@ -4,7 +4,7 @@ import '@testing-library/jest-dom';
 
 // 타입스크립트에서 jest-dom의 확장 메서드를 인식할 수 있도록 타입 정의 추가
 declare global {
-  // eslint-disable-next-line @typescript-eslint/no-namespace
+   
   namespace jest {
     interface Matchers<R> {
       toBeInTheDocument(): R;
