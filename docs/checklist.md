@@ -50,12 +50,12 @@
   - [x] 로컬 스토리지 어댑터 구현
   - **커밋**: "로컬 스토리지 어댑터 구현 (TDD)"
 
-- [ ] **2.4 Todo 관련 커스텀 훅**
-  - [ ] useTodoState 훅 테스트 작성
-  - [ ] useTodoState 훅 구현
-  - [ ] useTodoActions 훅 테스트 작성
-  - [ ] useTodoActions 훅 구현
-  - **커밋**: "Todo 커스텀 훅 구현 (TDD)"
+- [x] **2.4 Todo 관련 커스텀 훅**
+  - [x] useTodoHooks 훅 테스트 작성
+  - [x] useTodoHooks 훅 구현
+  - [x] TodoContext 테스트 수정 (useTodoHooks 사용)
+  - [x] TodoReducer 테스트 수정 (useTodoHooks 사용)
+  - **커밋**: "Todo 커스텀 훅 구현 및 테스트 수정 (TDD)"
 
 ## 3단계: 프론트엔드 UI 컴포넌트 구현 (Mantine 기반)
 
