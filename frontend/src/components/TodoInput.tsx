@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { TextInput, Button, Group, Box } from '@mantine/core';
+import { TextInput, Button, Group, Box, Select } from '@mantine/core';
 import { IconPencil, IconPlus } from '@tabler/icons-react';
 import { useTodoDispatch } from '../contexts/TodoContext';
 import { TodoActionType } from '../contexts/TodoContext';
@@ -7,6 +7,7 @@ import { TodoPriority } from '@vibecoding-demo/shared/src/types/todo';
 
 export function TodoInput() {
   const [title, setTitle] = useState('');
+  const [priority, setPriority] = useState<string>(TodoPriority.MEDIUM);
   const dispatch = useTodoDispatch();
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -17,10 +18,11 @@ export function TodoInput() {
         type: TodoActionType.ADD_TODO,
         payload: {
           title: title.trim(),
-          priority: TodoPriority.MEDIUM
+          priority: priority as TodoPriority
         }
       });
       setTitle('');
+      setPriority(TodoPriority.MEDIUM);
     }
   };
 
@@ -34,6 +36,18 @@ export function TodoInput() {
           onChange={(e) => setTitle(e.target.value)}
           style={{ flex: 1 }}
           data-testid="todo-input"
+        />
+        <Select
+          placeholder="우선순위"
+          value={priority}
+          onChange={(value) => setPriority(value || TodoPriority.MEDIUM)}
+          data={[
+            { value: TodoPriority.HIGH, label: '높음' },
+            { value: TodoPriority.MEDIUM, label: '중간' },
+            { value: TodoPriority.LOW, label: '낮음' }
+          ]}
+          style={{ width: '120px' }}
+          data-testid="todo-priority-select"
         />
         <Button 
           type="submit" 
