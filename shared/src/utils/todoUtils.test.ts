@@ -6,7 +6,8 @@ import {
   sortTodosByPriority,
   filterTodosByStatus
 } from './todoUtils';
-import { Todo, TodoPriority, TodoStatus, CreateTodoInput } from '../types/todo';
+import type { Todo, CreateTodoInput } from '../types/todo';
+import { TodoPriority, TodoStatus } from '../types/todo';
 import { MAX_TITLE_LENGTH } from '../constants/todo';
 
 describe('todoUtils', () => {
