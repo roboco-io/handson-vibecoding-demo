@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useReducer, ReactNode } from 'react';
-import { Todo, TodoStatus, UpdateTodoInput } from '@vibecoding-demo/shared/src/types/todo';
+import { Todo, TodoStatus, UpdateTodoInput, TodoPriority } from '@vibecoding-demo/shared/src/types/todo';
 import { v4 as uuidv4 } from 'uuid';
 
 /**
@@ -18,7 +18,12 @@ export enum TodoActionType {
  */
 export interface TodoAction {
   type: TodoActionType | string;
-  payload?: any;
+  payload?: {
+    id?: string;
+    title?: string;
+    priority?: TodoPriority;
+    status?: TodoStatus;
+  };
 }
 
 /**
@@ -33,8 +38,8 @@ export const todoReducer = (state: Todo[], action: TodoAction): Todo[] => {
       const now = new Date();
       const newTodo: Todo = {
         id: uuidv4(),
-        title: action.payload.title,
-        priority: action.payload.priority,
+        title: action.payload?.title || '',
+        priority: action.payload?.priority || TodoPriority.MEDIUM,
         status: TodoStatus.ACTIVE,
         createdAt: now,
         updatedAt: now
@@ -56,12 +61,12 @@ export const todoReducer = (state: Todo[], action: TodoAction): Todo[] => {
     }
     
     case TodoActionType.DELETE_TODO: {
-      const { id } = action.payload;
+      const { id } = action.payload || {};
       return state.filter(todo => todo.id !== id);
     }
     
     case TodoActionType.TOGGLE_TODO_STATUS: {
-      const { id } = action.payload;
+      const { id } = action.payload || {};
       return state.map(todo => 
         todo.id === id 
           ? { 

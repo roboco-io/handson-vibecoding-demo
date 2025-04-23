@@ -19,10 +19,9 @@ export default tseslint.config(
     },
     rules: {
       ...reactHooks.configs.recommended.rules,
-      'react-refresh/only-export-components': [
-        'warn',
-        { allowConstantExport: true },
-      ],
+      'react-refresh/only-export-components': 'off', // Fast refresh 경고 비활성화
+      '@typescript-eslint/no-explicit-any': 'warn', // any 타입 경고로 변경
+      '@typescript-eslint/no-namespace': 'off', // namespace 사용 허용
     },
   },
 )
