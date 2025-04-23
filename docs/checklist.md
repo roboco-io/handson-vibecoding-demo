@@ -36,12 +36,12 @@
   - [x] Todo 모델 구현
   - **커밋**: "Todo 모델 정의 및 테스트"
 
-- [ ] **2.2 Todo 상태 관리 (Context + Reducer)**
-  - [ ] TodoAction 타입 정의 및 테스트
-  - [ ] TodoReducer 테스트 작성
-  - [ ] TodoReducer 구현
-  - [ ] TodoContext 테스트 작성
-  - [ ] TodoContext 및 Provider 구현
+- [x] **2.2 Todo 상태 관리 (Context + Reducer)**
+  - [x] TodoAction 타입 정의 및 테스트
+  - [x] TodoReducer 테스트 작성
+  - [x] TodoReducer 구현
+  - [x] TodoContext 테스트 작성
+  - [x] TodoContext 및 Provider 구현
   - **커밋**: "Todo 상태 관리 로직 구현 (TDD)"
 
 - [ ] **2.3 로컬 스토리지 어댑터**
