@@ -4,10 +4,13 @@
 
 ## 1단계: 모노레포 프로젝트 초기화 및 기본 설정
 
-- [ ] **1.1 모노레포 디렉토리 구조 생성**
-  - [ ] frontend/, backend/, shared/, infrastructure/, docs/, scripts/ 디렉토리 생성
-  - [ ] 각 영역별 README.md 작성 (간단 역할 설명)
+- [x] **1.1 모노레포 디렉토리 구조 생성**
+  - [x] frontend/, backend/, shared/, infrastructure/, docs/, scripts/ 디렉토리 생성
+  - [x] 각 영역별 README.md 작성 (간단 역할 설명)
   - **커밋**: "모노레포 디렉토리 구조 및 기본 문서 생성"
+
+- [x] 루트에 프로젝트 설명용 README.md 작성 및 추가
+  - **커밋**: "docs: 루트 프로젝트 설명용 README.md 생성 및 구조/규칙 명시"
 
 - [ ] **1.2 프론트엔드 프로젝트 설정**
   - [ ] React + Vite + TypeScript + Mantine 프로젝트 초기화 (frontend/)
