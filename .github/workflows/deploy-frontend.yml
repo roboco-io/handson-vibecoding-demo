@@ -34,7 +34,7 @@ jobs:
         run: |
           rm -rf node_modules
           rm -f package-lock.json
-          npm install
+          HUSKY=0 npm install
       
       - name: shared 패키지 빌드
         run: npm run build:shared
@@ -43,7 +43,7 @@ jobs:
         run: |
           cd frontend
           rm -rf node_modules
-          npm install
+          HUSKY=0 npm install
           npm run build
       
       - name: GitHub Pages 설정
