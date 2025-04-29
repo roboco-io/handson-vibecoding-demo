@@ -27,8 +27,8 @@ export function TodoInput() {
   };
 
   return (
-    <Box component="form" onSubmit={handleSubmit} mb="md">
-      <Group align="flex-end" gap="sm">
+    <Box component="form" onSubmit={handleSubmit} mb="md" style={{ width: '100%' }}>
+      <Group align="flex-end" gap="sm" style={{ width: '100%' }}>
         <TextInput
           leftSection={<IconPencil size={16} />}
           placeholder="새 할일 추가"

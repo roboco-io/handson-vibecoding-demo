@@ -61,7 +61,7 @@ export function TodoList() {
 
   // 화면 크기에 따라 테이블 또는 리스트 형태로 표시
   return (
-    <Stack>
+    <Stack style={{ width: '100%' }}>
       <TodoFilters 
         filter={filter} 
         setFilter={setFilter} 
@@ -69,10 +69,10 @@ export function TodoList() {
         setSortBy={setSortBy} 
       />
 
-      <Paper withBorder p={0}>
+      <Paper withBorder p={0} style={{ width: '100%', overflow: 'auto' }}>
         {/* 데스크톱 뷰 - 테이블 형태 (md 이상 화면에서만 표시) */}
-        <Box visibleFrom="md">
-          <Table striped highlightOnHover>
+        <Box visibleFrom="md" style={{ width: '100%' }}>
+          <Table striped highlightOnHover style={{ width: '100%', tableLayout: 'fixed' }}>
             <Table.Thead>
               <Table.Tr>
                 <Table.Th style={{ width: 50 }}>상태</Table.Th>

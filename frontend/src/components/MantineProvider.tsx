@@ -12,6 +12,17 @@ const theme = createTheme({
         radius: 'md',
       },
     },
+    Container: {
+      defaultProps: {
+        sizes: {
+          xs: '100%',
+          sm: '100%',
+          md: '100%',
+          lg: '100%',
+          xl: '100%',
+        },
+      },
+    },
   },
 });
 
