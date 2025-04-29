@@ -3,7 +3,7 @@
 ## 핵심 규칙
 
 - 커뮤니케이션은 한국어로 진행합니다.
-- 프론트엔드 UI 구현 시에는 실행 코드를 먼저 작성합니다. 코어 비즈니스 로직 구현 시에만 TDD로 진행합니다.
+- 프론트엔드 UI 구현 시에는 실행 코드를 먼저 작성합니다. 코어 비즈니스 로직 구현 시에는 TDD로 진행합니다.
 - 백엔드는 TDD로 구현합니다.
 - 커밋 전에 docs/checklist.md에 진행상황을 업데이트합니다.
 - 설계 변경 시에는 requirements.md와 design.md를 수정합니다.
@@ -208,3 +208,47 @@
 3. 백엔드 API 구현 (AWS 서버리스)
 4. 인증 시스템 통합 (AWS Cognito)
 5. 배포 및 CI/CD 구성
+
+## 라이브러리 및 프레임워크 버전
+
+### 프론트엔드
+
+| 라이브러리/프레임워크 | 버전 | 공식 문서 URL |
+|----------------------|------|--------------|
+| Node.js | v22.x | https://nodejs.org/docs/latest-v22.x/api/ |
+| npm | v10.x | https://docs.npmjs.com/ |
+| React | v18.x | https://react.dev/ |
+| TypeScript | v5.x | https://www.typescriptlang.org/docs/ |
+| Mantine | v7.x | https://mantine.dev/ |
+| Jest | v29.x | https://jestjs.io/docs/getting-started |
+| React Testing Library | v14.x | https://testing-library.com/docs/react-testing-library/intro/ |
+| Vite | v5.x | https://vitejs.dev/guide/ |
+
+### 백엔드
+
+| 라이브러리/프레임워크 | 버전 | 공식 문서 URL |
+|----------------------|------|--------------|
+| Node.js | v22.x | https://nodejs.org/docs/latest-v22.x/api/ |
+| TypeScript | v5.x | https://www.typescriptlang.org/docs/ |
+| AWS SDK | v3.x | https://docs.aws.amazon.com/sdk-for-javascript/v3/developer-guide/welcome.html |
+| Jest | v29.x | https://jestjs.io/docs/getting-started |
+
+### 인프라
+
+| 라이브러리/프레임워크 | 버전 | 공식 문서 URL |
+|----------------------|------|--------------|
+| AWS CDK | v2.x | https://docs.aws.amazon.com/cdk/v2/guide/home.html |
+| AWS Lambda | - | https://docs.aws.amazon.com/lambda/latest/dg/welcome.html |
+| Amazon DynamoDB | - | https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Introduction.html |
+| Amazon API Gateway | - | https://docs.aws.amazon.com/apigateway/latest/developerguide/welcome.html |
+| Amazon Cognito | - | https://docs.aws.amazon.com/cognito/latest/developerguide/what-is-amazon-cognito.html |
+
+### 개발 도구
+
+| 도구 | 버전 | 공식 문서 URL |
+|-----|------|--------------|
+| ESLint | v8.x | https://eslint.org/docs/latest/ |
+| Prettier | v3.x | https://prettier.io/docs/en/ |
+| Husky | v9.x | https://typicode.github.io/husky/ |
+| lint-staged | v15.x | https://github.com/lint-staged/lint-staged |
+| GitHub Actions | - | https://docs.github.com/ko/actions |
