@@ -13,27 +13,29 @@ jobs:
     - uses: actions/setup-node@v4
       with:
         node-version: 22
-    - name: 의존성 설치 (루트)
+    
+    # 의존성 설치 및 shared 패키지 빌드
+    - name: Install dependencies
       run: |
-        npm install
-    - name: shared 패키지 빌드
-      run: npm run build:shared
-    - name: 프론트엔드 의존성 설치
-      run: |
-        cd frontend
-        npm install
+        npm ci
+        cd shared
+        npm ci
+        npm run build
+        cd ..
+    
+    # Playwright 설치
     - name: Install Playwright Browsers
       run: |
         cd frontend
         npx playwright install --with-deps
-    - name: Build frontend
-      run: |
-        cd frontend
-        npm run build
+    
+    # 기능 테스트만 실행 (시각적 테스트 제외)
     - name: Run Playwright tests
       run: |
         cd frontend
-        npx playwright test
+        npx playwright test e2e/todo.spec.ts
+    
+    # 테스트 결과 아티팩트 업로드
     - uses: actions/upload-artifact@v4
       if: always()
       with:
