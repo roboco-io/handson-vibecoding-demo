@@ -8,22 +8,32 @@ jobs:
   test:
     timeout-minutes: 60
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./frontend
     steps:
     - uses: actions/checkout@v4
     - uses: actions/setup-node@v4
       with:
         node-version: 22
-    - name: Install dependencies
-      run: npm ci
+    - name: 의존성 설치 (루트)
+      run: |
+        npm install
+    - name: shared 패키지 빌드
+      run: npm run build:shared
+    - name: 프론트엔드 의존성 설치
+      run: |
+        cd frontend
+        npm install
     - name: Install Playwright Browsers
-      run: npx playwright install --with-deps
+      run: |
+        cd frontend
+        npx playwright install --with-deps
     - name: Build frontend
-      run: npm run build
+      run: |
+        cd frontend
+        npm run build
     - name: Run Playwright tests
-      run: npx playwright test
+      run: |
+        cd frontend
+        npx playwright test
     - uses: actions/upload-artifact@v4
       if: always()
       with:
