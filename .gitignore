@@ -44,6 +44,12 @@ pnpm-debug.log*
 # 테스트 커버리지
 /coverage/
 
+# Playwright 테스트 결과
+/frontend/playwright-report/
+/frontend/test-results/
+/playwright-report/
+/test-results/
+
 # 캐시 디렉토리
 .npm/
 .eslintcache
