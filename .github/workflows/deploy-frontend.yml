@@ -30,14 +30,21 @@ jobs:
           node-version: '22'
           cache: 'npm'
       
-      - name: 의존성 설치
-        run: npm ci
+      - name: 의존성 설치 (clean install)
+        run: |
+          rm -rf node_modules
+          rm -f package-lock.json
+          npm install
       
       - name: shared 패키지 빌드
         run: npm run build:shared
       
       - name: 프론트엔드 빌드
-        run: npm run build:frontend
+        run: |
+          cd frontend
+          rm -rf node_modules
+          npm install
+          npm run build
       
       - name: GitHub Pages 설정
         uses: actions/configure-pages@v4
