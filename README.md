@@ -28,6 +28,7 @@ root/
 - 커밋 전 checklist.md에 진행상황 반영
 - 설계 변경시 requirements.md, design.md 동시 수정
 - 커뮤니케이션은 한국어
+- 자세한 규칙은 [글로벌 규칙](./global_windsurf_rules.md)과 [워크스페이스 규칙](.windsurfrules) 참조
 
 ## 시작하기
 각 패키지별 README.md와 docs/ 폴더의 문서를 참고하세요.
