@@ -65,3 +65,4 @@ pnpm-debug.log*
 # 로컬 설정 파일
 .npmrc
 .yarnrc
+.vscode
