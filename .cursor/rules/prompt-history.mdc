@@ -1,7 +1,7 @@
 ---
-description: 
+description: 커밋하는 시점에 이 규칙을 실행해줘.
 globs: 
-alwaysApply: true
+alwaysApply: false
 ---
 # 프롬프트 히스토리 관리 규칙
 
