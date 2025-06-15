@@ -15,6 +15,9 @@
     "build:shared": "cd shared && npm run build",
     "test:shared": "cd shared && npm run test",
     "lint:shared": "cd shared && npm run lint",
+    "build:backend": "cd backend && npm run build",
+    "test:backend": "cd backend && npm run test",
+    "lint:backend": "cd backend && npm run lint",
     "prepare": "husky install"
   },
   "engines": {

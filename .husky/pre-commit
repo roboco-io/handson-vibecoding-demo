@@ -14,20 +14,15 @@ echo "[DEBUG] 프론트엔드 변경 파일: $FRONTEND_CHANGED"
 
 if [ -n "$FRONTEND_CHANGED" ]; then
   echo "[husky] 프론트엔드 실행 코드 변경 감지. lint, build, test를 실행합니다."
-  cd frontend
-  echo "[DEBUG] frontend 디렉토리로 이동: $(pwd)"
   
   echo "[DEBUG] lint 실행 시작..."
-  npm run lint -- --fix
+  npm run lint:frontend -- --fix
   
   echo "[DEBUG] build 실행 시작..."
-  npm run build
+  npm run build:frontend
   
   echo "[DEBUG] test 실행 시작..."
-  npm test
-  
-  cd ..
-  echo "[DEBUG] 루트 디렉토리로 복귀: $(pwd)"
+  npm run test:frontend
 else
   echo "[husky] 프론트엔드 실행 코드 변경 없음. 검증 건너뜀."
 fi
@@ -38,20 +33,15 @@ echo "[DEBUG] 백엔드 변경 파일: $BACKEND_CHANGED"
 
 if [ -n "$BACKEND_CHANGED" ]; then
   echo "[husky] 백엔드 실행 코드 변경 감지. lint, build, test를 실행합니다."
-  cd backend
-  echo "[DEBUG] backend 디렉토리로 이동: $(pwd)"
   
   echo "[DEBUG] lint 실행 시작..."
-  npm run lint -- --fix
+  npm run lint:backend -- --fix
   
   echo "[DEBUG] build 실행 시작..."
-  npm run build
+  npm run build:backend
   
   echo "[DEBUG] test 실행 시작..."
-  npm test
-  
-  cd ..
-  echo "[DEBUG] 루트 디렉토리로 복귀: $(pwd)"
+  npm run test:backend
 else
   echo "[husky] 백엔드 실행 코드 변경 없음. 검증 건너뜀."
 fi
