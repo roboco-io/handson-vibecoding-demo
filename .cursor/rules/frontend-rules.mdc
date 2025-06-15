@@ -1,0 +1,40 @@
+---
+description: 프론트엔드 관련 작업시에 적용한다.
+globs: 
+alwaysApply: false
+---
+# 프론트엔드 개발 규칙
+
+## 컴포넌트 아키텍처
+- 컴포넌트는 단일 책임 원칙을 따라야 함
+- 컴포넌트는 재사용 가능하고 테스트 가능해야 함
+- 프레젠테이션 컴포넌트와 컨테이너 컴포넌트 분리
+- 컴포넌트 크기는 작고 집중적으로 유지
+
+## 상태 관리
+- React Context API와 useReducer를 사용한 상태 관리
+- 로컬 상태는 useState 사용
+- 전역 상태는 Context API 사용
+- 상태 업데이트는 불변성 유지
+
+## UI 라이브러리
+- Mantine UI 컴포넌트 라이브러리 활용
+- 일관된 디자인 시스템 유지
+- 접근성(WCAG 2.1 AA) 준수
+- 반응형 디자인 구현
+
+## 테스트 방법
+- 프론트엔드 UI 구현 시 실행 코드 먼저 작성
+- 코어 비즈니스 로직 구현 시에만 TDD 방식 적용
+- Jest와 React Testing Library를 사용한 컴포넌트 테스트
+- 사용자 상호작용 시나리오 테스트
+- 스냅샷 테스트 활용
+
+## 버전 정보
+- Node.js: v22.x
+- React: v18.x
+- TypeScript: v5.x
+- Mantine: v7.x
+- Jest: v29.x
+- React Testing Library: v14.x
+- Vite: v5.x

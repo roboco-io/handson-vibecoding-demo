@@ -1,0 +1,35 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# 프로젝트 구조 및 기본 규칙
+
+## 모노레포 구조
+- frontend/: React + Mantine 기반 프론트엔드
+- backend/: Node.js(TypeScript) 기반 백엔드
+- shared/: 공통 타입, 유틸리티, API 인터페이스
+- infrastructure/: AWS CDK 인프라 코드
+- docs/: 문서화
+- scripts/: 유틸리티 스크립트
+
+## 핵심 규칙
+- 커뮤니케이션은 한국어로 진행
+- 프론트엔드 UI 구현 시에는 실행 코드를 먼저 작성
+- 코어 비즈니스 로직 구현 시에는 TDD로 진행
+- 백엔드는 TDD로 구현
+- 커밋 전에 docs/checklist.md에 진행상황 업데이트
+- 설계 변경 시에는 requirements.md와 design.md를 수정
+
+## 구현 우선순위
+1. 기본 TODO CRUD 기능 구현 (프론트엔드 우선)
+2. UI/UX 개선
+3. 백엔드 API 구현 (AWS 서버리스)
+4. 인증 시스템 통합 (AWS Cognito)
+5. 배포 및 CI/CD 구성
+
+## 문서화
+- 주요 컴포넌트 개발 후 /docs/[component].md에 요약 작성
+- AWS 리소스에 대한 설명은 영문으로 작성
+- 기술적 용어나 라이브러리 이름은 원문 유지
+- 간단한 다이어그램은 mermaid 사용, 복잡한 아키텍처 다이어그램은 SVG 파일 생성

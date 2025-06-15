@@ -1,0 +1,42 @@
+---
+description: 백엔드 관련 작업시에 적용한다.
+globs: 
+alwaysApply: false
+---
+# 백엔드 개발 규칙
+
+## API 설계
+- RESTful API 원칙 준수
+- 명확하고 일관된 엔드포인트 명명
+- 적절한 HTTP 메서드 사용
+- 오류 처리 및 상태 코드 표준화
+
+## 데이터 접근
+- DynamoDB 테이블 설계 최적화
+- 데이터 액세스 계층 추상화
+- 쿼리 성능 최적화
+- 트랜잭션 및 일관성 관리
+
+## Clean Architecture
+- 엔티티: 핵심 비즈니스 규칙 및 데이터 구조
+- 유스케이스: 애플리케이션 특정 비즈니스 규칙
+- 인터페이스 어댑터: 컨트롤러, 프레젠터, 게이트웨이
+- 프레임워크 및 드라이버: 웹, UI, DB, 외부 서비스
+
+## 의존성 규칙
+- 내부 계층은 외부 계층에 의존하지 않음
+- 의존성 주입을 통한 결합도 감소
+- 인터페이스를 통한 추상화
+- 외부 프레임워크/라이브러리에 대한 의존성 최소화
+
+## 버전 정보
+- Node.js: v22.x
+- TypeScript: v5.x
+- AWS SDK: v3.x
+- Jest: v29.x
+
+## AWS 서비스
+- AWS Lambda
+- Amazon DynamoDB
+- Amazon API Gateway
+- Amazon Cognito

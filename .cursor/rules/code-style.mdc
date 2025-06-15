@@ -1,0 +1,45 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# 코드 스타일 및 구조 규칙
+
+## 일반 원칙
+- 간결하고 가독성 높은 TypeScript 코드 작성
+- 함수형 및 선언적 프로그래밍 패턴 사용
+- DRY(Don't Repeat Yourself) 원칙 준수
+- 가독성 향상을 위한 조기 반환(early return) 구현
+- 컴포넌트 논리적 구조화: 내보내기, 하위 컴포넌트, 헬퍼, 타입
+
+## 명명 규칙
+- 보조 동사가 포함된 설명적 이름 사용 (isLoading, hasError)
+- 이벤트 핸들러에 "handle" 접두사 사용 (handleClick, handleSubmit)
+- 디렉토리는 소문자와 대시 사용 (components/todo-list)
+- 컴포넌트는 명명된 내보내기(named exports) 선호
+
+## TypeScript 사용
+- 모든 코드에 TypeScript 사용
+- 타입보다 인터페이스 선호
+- enum 대신 const 맵 사용
+- 적절한 타입 안전성 및 추론 구현
+- 타입 검증을 위한 `satisfies` 연산자 사용
+
+## 개발 도구
+- ESLint: v8.x
+- Prettier: v3.x
+- Husky: v9.x
+- lint-staged: v15.x
+- GitHub Actions
+
+## Git 사용 규칙
+- `--no-verify` 절대 사용 금지
+- 명확하고 일관된 커밋 메시지 작성
+- 적절한 크기로 커밋 유지
+- 브랜치 전략 준수
+
+## 코드 리뷰 프로세스
+- 코드 품질 및 표준 준수 확인
+- 테스트 커버리지 검증
+- 성능 및 보안 이슈 검토
+- 문서화 적절성 확인
