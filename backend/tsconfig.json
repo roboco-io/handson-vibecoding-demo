@@ -13,12 +13,12 @@
     "noUnusedParameters": false,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": false,
-    "inlineSourceMap": true,
-    "inlineSources": true,
+    "inlineSourceMap": false,
+    "sourceMap": true,
     "experimentalDecorators": true,
     "strictPropertyInitialization": false,
-    "esModuleInterop": true,
     "typeRoots": ["./node_modules/@types"],
+    "types": ["node"],
     "outDir": "dist",
     "rootDir": ".",
     "baseUrl": ".",
@@ -27,5 +27,5 @@
     }
   },
   "include": ["src/**/*", "bin/**/*", "lib/**/*"],
-  "exclude": ["node_modules", "cdk.out", "dist", "test"]
+  "exclude": ["node_modules", "cdk.out", "dist"]
 } 
