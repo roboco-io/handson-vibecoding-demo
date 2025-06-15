@@ -5,11 +5,33 @@
 이 문서는 TODO 웹 애플리케이션의 아키텍처 및 설계 방향을 정의합니다. 이 애플리케이션은 Clean Architecture와 SOLID 원칙을 기반으로 설계되었습니다.
 
 ### 1.1 모노레포 구조
-- 프론트엔드와 공유 모듈을 하나의 저장소에서 통합 관리합니다.
+- 프론트엔드, 백엔드, 공유 모듈을 하나의 저장소에서 통합 관리합니다.
 - 예시 디렉토리 구조:
   - frontend/: React + Mantine 기반 프론트엔드
+  - backend/: Node.js + TypeScript 기반 백엔드 (Lambda + CDK)
+    - src/: Lambda 함수 소스 코드
+      - application/: 유스케이스 구현
+      - domain/: 도메인 모델 및 인터페이스
+      - infrastructure/: 외부 서비스 구현
+        - dynamodb/: DynamoDB 어댑터
+        - cognito/: Cognito 어댑터
+      - interfaces/: API 인터페이스
+        - rest/: REST API 컨트롤러
+      - main/: 애플리케이션 진입점
+    - lib/: CDK 스택 정의
+      - api/: API Gateway 스택
+      - auth/: Cognito 스택
+      - database/: DynamoDB 스택
+      - lambda/: Lambda 함수 스택
+    - test/: 테스트 코드
   - shared/: 공통 타입, 유틸리티 등
-- 장점: 패키지 간 의존성 관리, 일관된 빌드/테스트, 코드 재사용, 공통 타입 공유 등
+- 장점: 
+  - 패키지 간 의존성 관리
+  - 일관된 빌드/테스트
+  - 코드 재사용
+  - 공통 타입 공유
+  - Lambda 함수와 인프라 코드의 긴밀한 통합
+  - 배포 프로세스 단순화
 
 ### 1.2 전체 아키텍처
 
@@ -18,6 +40,9 @@
 ### 1.3 개발 단계
 
 1. **1단계**: 프론트엔드 구현 (로컬 스토리지 사용)
+2. **2단계**: 백엔드 구현 (AWS 서버리스)
+3. **3단계**: 프론트엔드-백엔드 연동
+4. **4단계**: 인프라 및 배포
 
 ## 2. 프론트엔드 설계
 
@@ -149,21 +174,292 @@ class LocalStorageService implements StorageService {
 3. 코드 리팩토링
 4. 반복
 
-## 6. 배포 전략
+## 4. 백엔드 설계
 
-### 6.1 프론트엔드 배포
+### 4.1 아키텍처
 
-1. GitHub Actions를 사용한 CI/CD 파이프라인 구성
-2. GitHub Pages에 정적 웹 사이트 배포
+AWS 서버리스 아키텍처를 기반으로 설계합니다:
 
-### 6.2 환경 구성
+```
+root/
+├── backend/        # 백엔드(Node.js + TypeScript)
+│   └── src/
+│       ├── application/    # 유스케이스 구현
+│       ├── domain/         # 도메인 모델 및 인터페이스
+│       ├── infrastructure/ # 외부 서비스 구현
+│       │   ├── dynamodb/   # DynamoDB 어댑터
+│       │   └── cognito/    # Cognito 어댑터
+│       ├── interfaces/     # API 인터페이스
+│       │   └── rest/       # REST API 컨트롤러
+│       └── main/           # 애플리케이션 진입점
+└── infrastructure/ # AWS CDK 인프라 코드
+    └── lib/
+        ├── api/           # API Gateway 스택
+        ├── auth/          # Cognito 스택
+        ├── database/      # DynamoDB 스택
+        └── lambda/        # Lambda 함수 스택
+```
 
-1. **개발 환경**: 로컬 개발 및 테스트
-2. **프로덕션 환경**: GitHub Pages 배포
+### 4.2 API 설계
 
-## 7. 구현 계획
+RESTful API 원칙을 준수하여 설계합니다:
 
-### 7.1 1단계: 프론트엔드 초기 구현 (로컬 스토리지)
+```typescript
+// API 엔드포인트 정의
+const API_ENDPOINTS = {
+  TODOS: '/api/v1/todos',
+  TODO: (id: string) => `/api/v1/todos/${id}`,
+};
+
+// API 응답 형식
+interface ApiResponse<T> {
+  success: boolean;
+  data?: T;
+  error?: {
+    code: string;
+    message: string;
+  };
+}
+
+// HTTP 메서드별 동작
+const HTTP_METHODS = {
+  GET: '조회',
+  POST: '생성',
+  PUT: '수정',
+  DELETE: '삭제',
+} as const;
+```
+
+### 4.3 데이터 모델
+
+DynamoDB 단일 테이블 디자인을 적용합니다:
+
+```typescript
+// DynamoDB 테이블 스키마
+interface TodoTable {
+  PK: string;  // USER#${userId}
+  SK: string;  // TODO#${todoId}
+  GSI1PK: string;  // STATUS#${status}
+  GSI1SK: string;  // CREATED_AT#${timestamp}
+  title: string;
+  priority: 'low' | 'medium' | 'high';
+  status: 'pending' | 'completed';
+  createdAt: string;
+  updatedAt: string;
+}
+```
+
+### 4.4 인증 및 권한
+
+Cognito를 통한 인증 및 권한 관리를 구현합니다:
+
+```typescript
+// 권한 레벨 정의
+enum PermissionLevel {
+  PUBLIC = 'public',
+  AUTHENTICATED = 'authenticated',
+  ADMIN = 'admin',
+}
+
+// API Gateway 권한 설정
+const API_PERMISSIONS = {
+  [API_ENDPOINTS.TODOS]: {
+    GET: PermissionLevel.AUTHENTICATED,
+    POST: PermissionLevel.AUTHENTICATED,
+  },
+  [API_ENDPOINTS.TODO('*')]: {
+    GET: PermissionLevel.AUTHENTICATED,
+    PUT: PermissionLevel.AUTHENTICATED,
+    DELETE: PermissionLevel.AUTHENTICATED,
+  },
+};
+```
+
+### 4.5 Lambda 함수 설계
+
+Clean Architecture 원칙을 적용한 Lambda 함수 설계:
+
+```typescript
+// Lambda 함수 핸들러
+export const handler = async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => {
+  try {
+    const useCase = new TodoUseCase(
+      new DynamoDBRepository(),
+      new CognitoAuthService()
+    );
+    
+    const result = await useCase.execute(event);
+    
+    return {
+      statusCode: 200,
+      body: JSON.stringify({
+        success: true,
+        data: result,
+      }),
+    };
+  } catch (error) {
+    return {
+      statusCode: error.statusCode || 500,
+      body: JSON.stringify({
+        success: false,
+        error: {
+          code: error.code,
+          message: error.message,
+        },
+      }),
+    };
+  }
+};
+```
+
+## 5. 인프라 설계
+
+### 5.1 AWS CDK 스택 구성
+
+```typescript
+// CDK 스택 구조
+class TodoAppStack extends Stack {
+  constructor(scope: Construct, id: string, props?: StackProps) {
+    super(scope, id, props);
+
+    // Cognito 스택
+    const auth = new AuthStack(this, 'AuthStack');
+    
+    // DynamoDB 스택
+    const database = new DatabaseStack(this, 'DatabaseStack');
+    
+    // Lambda 함수 스택
+    const lambda = new LambdaStack(this, 'LambdaStack', {
+      database,
+      auth,
+    });
+    
+    // API Gateway 스택
+    const api = new ApiStack(this, 'ApiStack', {
+      lambda,
+      auth,
+    });
+  }
+}
+```
+
+### 5.2 CI/CD 파이프라인
+
+GitHub Actions를 사용한 CI/CD 파이프라인 구성:
+
+```yaml
+# GitHub Actions 워크플로우
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run Tests
+        run: npm test
+
+  deploy:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Deploy to AWS
+        run: npm run deploy
+```
+
+## 6. 모니터링 및 로깅
+
+### 6.1 CloudWatch 설정
+
+```typescript
+// CloudWatch 알람 설정
+const createAlarm = (metric: Metric, threshold: number) => {
+  new Alarm(this, `${metric.metricName}Alarm`, {
+    metric,
+    threshold,
+    evaluationPeriods: 1,
+    alarmDescription: `Alarm when ${metric.metricName} exceeds ${threshold}`,
+  });
+};
+```
+
+### 6.2 X-Ray 추적
+
+```typescript
+// X-Ray 추적 설정
+const tracer = new XRayTracer({
+  serviceName: 'todo-app',
+  plugins: ['ECSPlugin', 'EC2Plugin'],
+});
+```
+
+## 7. 보안 설계
+
+### 7.1 API Gateway 보안
+
+```typescript
+// API Gateway 보안 설정
+const api = new RestApi(this, 'TodoApi', {
+  defaultCorsPreflightOptions: {
+    allowOrigins: ['https://your-domain.com'],
+    allowMethods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowHeaders: ['Authorization', 'Content-Type'],
+  },
+});
+```
+
+### 7.2 Lambda 함수 보안
+
+```typescript
+// Lambda 함수 보안 설정
+const lambda = new Function(this, 'TodoFunction', {
+  runtime: Runtime.NODEJS_18_X,
+  handler: 'index.handler',
+  vpc: vpc,
+  securityGroups: [securityGroup],
+  environment: {
+    NODE_ENV: 'production',
+  },
+});
+```
+
+## 8. 비용 최적화
+
+### 8.1 Lambda 함수 최적화
+
+```typescript
+// Lambda 함수 최적화 설정
+const lambda = new Function(this, 'TodoFunction', {
+  memorySize: 256,
+  timeout: Duration.seconds(10),
+  environment: {
+    POWERTOOLS_SERVICE_NAME: 'todo-app',
+    POWERTOOLS_METRICS_NAMESPACE: 'TodoApp',
+  },
+});
+```
+
+### 8.2 DynamoDB 최적화
+
+```typescript
+// DynamoDB 최적화 설정
+const table = new Table(this, 'TodoTable', {
+  billingMode: BillingMode.PAY_PER_REQUEST,
+  pointInTimeRecovery: true,
+  removalPolicy: RemovalPolicy.RETAIN,
+});
+```
+
+## 9. 구현 계획
+
+### 9.1 1단계: 프론트엔드 초기 구현 (로컬 스토리지)
 
 1. 프로젝트 설정 (React + Vite + TypeScript + Mantine)
 2. 기본 UI 컴포넌트 구현
@@ -171,32 +467,32 @@ class LocalStorageService implements StorageService {
 4. 로컬 스토리지 통합
 5. 테스트 작성
 
-### 7.2 2단계: UI/UX 개선
+### 9.2 2단계: 백엔드 구현 (AWS 서버리스)
+1. 기본 인프라 구성 (CDK)
+2. DynamoDB 테이블 설계 및 구현
+3. Lambda 함수 구현 (CRUD)
+4. API Gateway 설정
+5. Cognito 통합
 
-1. 반응형 디자인 개선
-2. 접근성 향상
-3. 다크 모드/라이트 모드 구현
-4. 애니메이션 및 전환 효과 추가
+### 9.3 3단계: 프론트엔드-백엔드 연동
+1. API 클라이언트 구현
+2. 스토리지 전략 전환
+3. 에러 처리 구현
+4. 통합 테스트
 
-### 7.3 3단계: 필터링 및 정렬 기능
+### 9.4 4단계: 인프라 및 배포
+1. CI/CD 파이프라인 구축
+2. 모니터링 및 로깅 설정
+3. 보안 강화
+4. 성능 최적화
 
-1. 필터링 컴포넌트 구현
-2. 정렬 기능 구현
-3. 검색 기능 구현
-4. 테스트 작성
-
-### 7.4 4단계: 배포
-
-1. GitHub Pages 배포 설정
-2. 최종 테스트 및 검증
-
-## 8. 결론
+## 10. 결론
 
 이 설계 문서는 TODO 웹 애플리케이션의 아키텍처, 컴포넌트, 데이터 모델, 테스트 전략 및 구현 계획을 정의합니다. Clean Architecture와 SOLID 원칙을 기반으로 설계되었으며, 확장성과 유지보수성을 고려했습니다.
 
 이 문서는 프로젝트 진행 과정에서 업데이트될 수 있습니다.
 
-## 9. Git Hooks & 자동화
+## 11. Git Hooks & 자동화
 
 - 프론트엔드 실행 코드(js/ts/tsx) 변경 시 pre-commit hook을 통해 lint fix, build, test가 자동으로 수행됨
 - .husky/pre-commit에 스크립트 적용, 실행 코드 외 변경시에는 훅이 동작하지 않음
