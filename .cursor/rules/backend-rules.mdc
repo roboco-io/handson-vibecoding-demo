@@ -5,6 +5,14 @@ alwaysApply: false
 ---
 # 백엔드 개발 규칙
 
+## 참조 문서(docs/design)
+- [아키텍처 개요](mdc:docs/design/architecture.md)
+- [백엔드 설계](mdc:docs/design/backend.md)
+- [인프라 설계](mdc:docs/design/infrastructure.md)
+- [보안 설계](mdc:docs/design/security.md)
+- [모니터링 설계](mdc:docs/design/monitoring.md)
+- [비용 최적화](mdc:docs/design/optimization.md)
+
 ## API 설계
 - RESTful API 원칙 준수
 - 명확하고 일관된 엔드포인트 명명

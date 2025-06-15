@@ -5,6 +5,12 @@ alwaysApply: false
 ---
 # 프론트엔드 개발 규칙
 
+## 참조 문서(docs/design)
+- [아키텍처 개요](mdc:docs/design/architecture.md)
+- [프론트엔드 설계](mdc:docs/design/frontend.md)
+- [백엔드 설계](mdc:docs/design/backend.md) (API 통신 참조)
+- [보안 설계](mdc:docs/design/security.md) (인증/인가 참조)
+
 ## 컴포넌트 아키텍처
 - 컴포넌트는 단일 책임 원칙을 따라야 함
 - 컴포넌트는 재사용 가능하고 테스트 가능해야 함
