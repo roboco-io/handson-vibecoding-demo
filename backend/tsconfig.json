@@ -19,8 +19,11 @@
     "strictPropertyInitialization": false,
     "typeRoots": ["./node_modules/@types"],
     "outDir": "dist",
-    "rootDir": "src",
-    "esModuleInterop": true
+    "rootDir": ".",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    }
   },
-  "exclude": ["node_modules", "dist", "test", "**/*.test.ts"]
+  "exclude": ["node_modules", "cdk.out", "dist"]
 } 
