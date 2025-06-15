@@ -8,17 +8,20 @@
     "shared"
   ],
   "scripts": {
-    "dev:frontend": "cd frontend && npm run dev",
-    "build:frontend": "cd frontend && npm run build",
-    "test:frontend": "cd frontend && npm run test",
-    "lint:frontend": "cd frontend && npm run lint",
-    "build:shared": "cd shared && npm run build",
-    "test:shared": "cd shared && npm run test",
-    "lint:shared": "cd shared && npm run lint",
-    "build:backend": "cd backend && npm run build",
-    "test:backend": "cd backend && npm run test",
-    "lint:backend": "cd backend && npm run lint",
-    "prepare": "husky install"
+    "frontend:dev": "cd frontend && npm run dev",
+    "frontend:build": "cd frontend && npm run build",
+    "frontend:test": "cd frontend && npm run test",
+    "frontend:lint": "cd frontend && npm run lint",
+    "shared:build": "cd shared && npm run build",
+    "shared:test": "cd shared && npm run test",
+    "shared:lint": "cd shared && npm run lint",
+    "backend:build": "cd backend && npm run build",
+    "backend:test": "cd backend && npm run test",
+    "backend:lint": "cd backend && npm run lint",
+    "prepare": "husky install",
+    "cdk:synth": "cd backend && npm run cdk:synth",
+    "cdk:deploy": "cd backend && npm run cdk:deploy",
+    "cdk:destroy": "cd backend && npm run cdk:destroy"
   },
   "engines": {
     "node": ">=22.0.0",
