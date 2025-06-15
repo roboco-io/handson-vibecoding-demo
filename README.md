@@ -25,7 +25,7 @@ root/
 ## 개발/운영 규칙
 - 프론트엔드 UI는 실행 코드를 우선 작성, 코어 로직은 TDD
 - 백엔드는 TDD 기반 개발
-- 커밋 전 checklist.md에 진행상황 반영
+- 커밋 전 tasks.md에 진행상황 반영
 - 설계 변경시 requirements.md, design.md 동시 수정
 - 커뮤니케이션은 한국어
 - 자세한 규칙은 [글로벌 규칙](./global_windsurf_rules.md)과 [워크스페이스 규칙](.windsurfrules) 참조
