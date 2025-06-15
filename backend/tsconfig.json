@@ -17,6 +17,7 @@
     "inlineSources": true,
     "experimentalDecorators": true,
     "strictPropertyInitialization": false,
+    "esModuleInterop": true,
     "typeRoots": ["./node_modules/@types"],
     "outDir": "dist",
     "rootDir": ".",
@@ -25,5 +26,6 @@
       "@/*": ["src/*"]
     }
   },
-  "exclude": ["node_modules", "cdk.out", "dist"]
+  "include": ["src/**/*", "bin/**/*", "lib/**/*"],
+  "exclude": ["node_modules", "cdk.out", "dist", "test"]
 } 

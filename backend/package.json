@@ -8,13 +8,15 @@
     "test": "test"
   },
   "scripts": {
-    "build": "tsc",
+    "build": "tsc --sourceMap",
+    "clean": "rimraf dist",
+    "prebuild": "npm run clean",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
     "lint": "eslint . --ext .ts",
     "lint:fix": "eslint . --ext .ts --fix",
-    "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
+    "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\" \"bin/**/*.ts\" \"lib/**/*.ts\"",
     "cdk": "cdk",
     "cdk:synth": "cdk synth",
     "cdk:deploy": "cdk deploy",
@@ -40,6 +42,7 @@
     "eslint-plugin-prettier": "^5.4.1",
     "jest": "^30.0.0",
     "prettier": "^3.5.3",
+    "rimraf": "^5.0.10",
     "ts-jest": "^29.4.0",
     "ts-node": "^10.9.2",
     "typescript": "^5.8.3"

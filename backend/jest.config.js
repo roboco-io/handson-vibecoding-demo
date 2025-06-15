@@ -6,9 +6,13 @@ module.exports = {
   transform: {
     '^.+\\.tsx?$': 'ts-jest',
   },
+  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/src/$1',
   },
+  collectCoverage: true,
+  coverageDirectory: 'coverage',
+  coverageReporters: ['text', 'lcov'],
   collectCoverageFrom: [
     'src/**/*.ts',
     '!src/**/*.d.ts',
