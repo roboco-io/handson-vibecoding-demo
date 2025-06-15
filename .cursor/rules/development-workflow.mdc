@@ -1,0 +1,57 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# 개발 워크플로우 가이드
+
+## 개발 단계
+
+1. **프론트엔드 개발**
+   - [프론트엔드 설계](mdc:docs/design/frontend.md)에 따라 컴포넌트 구현
+   - Mantine UI Kit를 사용한 UI 구현
+   - 로컬 스토리지를 활용한 데이터 관리
+
+2. **백엔드 개발**
+   - [백엔드 설계](mdc:docs/design/backend.md)에 따라 API 구현
+   - [인프라 설계](mdc:docs/design/infrastructure.md)에 따라 AWS 리소스 구성
+   - [보안 설계](mdc:docs/design/security.md)에 따라 인증/인가 구현
+
+3. **모니터링 및 최적화**
+   - [모니터링 설계](mdc:docs/design/monitoring.md)에 따라 모니터링 구성
+   - [비용 최적화](mdc:docs/design/optimization.md)에 따라 리소스 최적화
+
+## 개발 원칙
+
+1. **TDD 접근**
+   - 코어 비즈니스 로직은 TDD로 구현
+   - 테스트 커버리지 80% 이상 유지
+
+2. **코드 품질**
+   - ESLint와 Prettier를 사용한 코드 스타일 통일
+   - TypeScript의 타입 시스템 활용
+   - 코드 리뷰 필수
+
+3. **문서화**
+   - 주요 컴포넌트 개발 후 문서화
+   - API 문서 자동 생성
+   - 아키텍처 변경 시 관련 문서 업데이트
+
+## 배포 프로세스
+
+1. **개발 환경**
+   - 로컬 개발 환경 설정
+   - DynamoDB Local 사용
+   - LocalStack을 통한 AWS 서비스 에뮬레이션
+
+2. **테스트 환경**
+   - 자동화된 테스트 실행
+   - 통합 테스트 수행
+   - E2E 테스트 실행
+
+3. **운영 환경**
+   - [구현 계획](mdc:docs/design/implementation.md)에 따른 배포
+   - 모니터링 및 알림 설정
+   - 롤백 전략 준비
+
+자세한 구현 계획은 [구현 계획](mdc:docs/design/implementation.md)을 참조하세요.
