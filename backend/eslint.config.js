@@ -2,6 +2,9 @@ const tseslint = require('typescript-eslint');
 const prettier = require('eslint-plugin-prettier');
 
 module.exports = [
+  {
+    ignores: ['dist', 'coverage'],
+  },
   ...tseslint.configs.recommended,
   {
     files: ['**/*.ts'],
