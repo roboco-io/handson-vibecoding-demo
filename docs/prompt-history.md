@@ -150,4 +150,30 @@ RDS를 제거하고 DynamoDB만 사용하도록 인프라를 변경해줘.
 - 데이터 마이그레이션 계획
 - 성능 테스트
 
-#refactor #chore 
+#refactor #chore
+
+## 백엔드 CDK 스택 구현
+
+### 프롬프트
+```
+CDK 기반으로 Database, Auth, Lambda, API Gateway 스택을 Clean Architecture 원칙에 맞게 구현해줘.
+```
+
+### 프롬프트 의도
+- AWS CDK를 활용한 인프라 IaC 구현
+- 각 도메인별 스택 분리 및 의존성 명확화
+- 서버리스 아키텍처와 최소 권한 원칙 적용
+
+### 결과 요약
+- DatabaseStack: DynamoDB 테이블, GSI, TTL, 자동 스케일링
+- AuthStack: Cognito User Pool, App Client, OAuth
+- LambdaStack: Todo/User Lambda, 환경 변수, IAM 역할
+- ApiStack: API Gateway, CORS, Cognito 인증
+- CDK synth 정상 동작 및 의존성/권한/보안 인수조건 충족
+
+### 후속 조치
+- 유스케이스(Application Layer) 구현
+- 인프라 어댑터(DynamoDB, Cognito) 구현
+- API 컨트롤러 및 Lambda 핸들러 구현
+
+#infra #cdk #tdd 
