@@ -13,19 +13,14 @@
     "noUnusedParameters": false,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": false,
-    "inlineSourceMap": false,
-    "sourceMap": true,
+    "inlineSourceMap": true,
+    "inlineSources": true,
     "experimentalDecorators": true,
     "strictPropertyInitialization": false,
-    "typeRoots": ["./node_modules/@types"],
-    "types": ["node"],
+    "types": ["node", "jest"],
     "outDir": "dist",
-    "rootDir": ".",
-    "baseUrl": ".",
-    "paths": {
-      "@/*": ["src/*"]
-    }
+    "rootDir": "."
   },
-  "include": ["src/**/*", "bin/**/*", "lib/**/*"],
-  "exclude": ["node_modules", "cdk.out", "dist"]
+  "exclude": ["node_modules", "cdk.out", "dist"],
+  "include": ["src/**/*.ts", "test/**/*.ts"]
 } 

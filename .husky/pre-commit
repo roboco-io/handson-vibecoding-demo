@@ -35,13 +35,13 @@ if [ -n "$BACKEND_CHANGED" ]; then
   echo "[husky] 백엔드 실행 코드 변경 감지. lint, build, test를 실행합니다."
   
   echo "[DEBUG] lint 실행 시작..."
-  npm run lint:backend -- --fix
+  npm run backend:lint -- --fix
   
   echo "[DEBUG] build 실행 시작..."
-  npm run build:backend
+  npm run backend:build
   
   echo "[DEBUG] test 실행 시작..."
-  npm run test:backend
+  npm run backend:test
 else
   echo "[husky] 백엔드 실행 코드 변경 없음. 검증 건너뜀."
 fi

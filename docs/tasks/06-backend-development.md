@@ -15,22 +15,22 @@
     - ESLint와 Prettier가 정상 동작
     - CDK 앱이 초기화되어 있음
 
-- [ ] **6.2 도메인 모델 및 인터페이스 구현 (TDD)**
-  - [ ] Todo 도메인 모델 구현 (src/domain/)
-    - [ ] Todo 엔티티 정의
-    - [ ] Todo 리포지토리 인터페이스 정의
-    - [ ] Todo 유스케이스 인터페이스 정의
-  - [ ] User 도메인 모델 구현 (src/domain/)
-    - [ ] User 엔티티 정의
-    - [ ] User 리포지토리 인터페이스 정의
-    - [ ] User 유스케이스 인터페이스 정의
+- [x] **6.2 도메인 모델 및 인터페이스 구현 (TDD)**
+  - [x] Todo 도메인 모델 구현 (src/domain/)
+    - [x] Todo 엔티티 정의
+    - [x] Todo 리포지토리 인터페이스 정의
+    - [x] Todo 유스케이스 인터페이스 정의
+  - [x] User 도메인 모델 구현 (src/domain/)
+    - [x] User 엔티티 정의
+    - [x] User 리포지토리 인터페이스 정의
+    - [x] User 유스케이스 인터페이스 정의
   - **커밋**: "도메인 모델 및 인터페이스 구현 (TDD)"
   - **인수조건**:
-    - 모든 도메인 모델에 대한 단위 테스트 통과
-    - 인터페이스가 Clean Architecture 원칙을 준수
-    - 테스트 커버리지 80% 이상 달성
+    - [x] 모든 도메인 모델에 대한 단위 테스트 통과
+    - [x] 인터페이스가 Clean Architecture 원칙을 준수
+    - [x] 테스트 커버리지 80% 이상 달성
 
-- [ ] **6.3 CDK 스택 구현 (TDD)**
+- [ ] **6.3 CDK 스택 구현**
   - [ ] DatabaseStack 구현 (lib/database/)
     - [ ] DynamoDB 테이블 정의
     - [ ] GSI 설정
