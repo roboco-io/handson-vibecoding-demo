@@ -16,13 +16,13 @@ if [ -n "$FRONTEND_CHANGED" ]; then
   echo "[husky] 프론트엔드 실행 코드 변경 감지. lint, build, test를 실행합니다."
   
   echo "[DEBUG] lint 실행 시작..."
-  npm run lint:frontend -- --fix
+  npm run frontend:lint -- --fix
   
   echo "[DEBUG] build 실행 시작..."
-  npm run build:frontend
+  npm run frontend:build
   
   echo "[DEBUG] test 실행 시작..."
-  npm run test:frontend
+  npm run frontend:test
 else
   echo "[husky] 프론트엔드 실행 코드 변경 없음. 검증 건너뜀."
 fi
