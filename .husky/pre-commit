@@ -17,12 +17,24 @@ if [ -n "$FRONTEND_CHANGED" ]; then
   
   echo "[DEBUG] lint 실행 시작..."
   npm run frontend:lint -- --fix
+  if [ $? -ne 0 ]; then
+    echo "[ERROR] 프론트엔드 lint 실패"
+    exit 1
+  fi
   
   echo "[DEBUG] build 실행 시작..."
   npm run frontend:build
+  if [ $? -ne 0 ]; then
+    echo "[ERROR] 프론트엔드 build 실패"
+    exit 1
+  fi
   
   echo "[DEBUG] test 실행 시작..."
   npm run frontend:test
+  if [ $? -ne 0 ]; then
+    echo "[ERROR] 프론트엔드 test 실패"
+    exit 1
+  fi
 else
   echo "[husky] 프론트엔드 실행 코드 변경 없음. 검증 건너뜀."
 fi
@@ -36,17 +48,27 @@ if [ -n "$BACKEND_CHANGED" ]; then
   
   echo "[DEBUG] lint 실행 시작..."
   npm run backend:lint -- --fix
+  if [ $? -ne 0 ]; then
+    echo "[ERROR] 백엔드 lint 실패"
+    exit 1
+  fi
   
   echo "[DEBUG] build 실행 시작..."
   npm run backend:build
+  if [ $? -ne 0 ]; then
+    echo "[ERROR] 백엔드 build 실패"
+    exit 1
+  fi
   
   echo "[DEBUG] test 실행 시작..."
   npm run backend:test
+  if [ $? -ne 0 ]; then
+    echo "[ERROR] 백엔드 test 실패"
+    exit 1
+  fi
 else
   echo "[husky] 백엔드 실행 코드 변경 없음. 검증 건너뜀."
 fi
 
 echo "[DEBUG] pre-commit 훅 종료: $(date)"
-echo "[DEBUG] 훅 종료 코드: 0 (성공)"
-
-exit 0
+echo "[DEBUG] 모든 검증 통과. 커밋을 진행합니다."
