@@ -56,4 +56,21 @@ describe('User Entity', () => {
       updatedAt: user.updatedAt,
     });
   });
+
+  it('should return correct values through getters', () => {
+    const props = {
+      id: 'user-getter-test',
+      email: 'getter@example.com',
+      name: 'Getter User',
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    };
+    const user = User.reconstruct(props);
+
+    expect(user.id).toBe(props.id);
+    expect(user.email).toBe(props.email);
+    expect(user.name).toBe(props.name);
+    expect(user.createdAt).toBe(props.createdAt);
+    expect(user.updatedAt).toBe(props.updatedAt);
+  });
 });
