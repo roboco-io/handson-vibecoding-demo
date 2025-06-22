@@ -52,4 +52,4 @@ export class DatabaseStack extends cdk.Stack {
       description: 'User 테이블 이름',
     });
   }
-} 
+}

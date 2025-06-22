@@ -56,4 +56,4 @@ describe('User Entity', () => {
       updatedAt: user.updatedAt,
     });
   });
-}); 
+});

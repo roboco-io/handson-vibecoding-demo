@@ -1,6 +1,5 @@
 import * as cdk from 'aws-cdk-lib';
 import * as apigateway from 'aws-cdk-lib/aws-apigateway';
-import * as cognito from 'aws-cdk-lib/aws-cognito';
 import { Construct } from 'constructs';
 import { LambdaStack } from '../lambda/lambda-stack';
 import { AuthStack } from '../auth/auth-stack';
@@ -45,68 +44,38 @@ export class ApiStack extends cdk.Stack {
     const todoIdResource = todoResource.addResource('{id}');
 
     // Todo API 메서드 생성
-    todoResource.addMethod(
-      'GET',
-      new apigateway.LambdaIntegration(lambdaStack.todoLambda),
-      {
-        authorizer,
-      },
-    );
+    todoResource.addMethod('GET', new apigateway.LambdaIntegration(lambdaStack.todoLambda), {
+      authorizer,
+    });
 
-    todoResource.addMethod(
-      'POST',
-      new apigateway.LambdaIntegration(lambdaStack.todoLambda),
-      {
-        authorizer,
-      },
-    );
+    todoResource.addMethod('POST', new apigateway.LambdaIntegration(lambdaStack.todoLambda), {
+      authorizer,
+    });
 
-    todoIdResource.addMethod(
-      'GET',
-      new apigateway.LambdaIntegration(lambdaStack.todoLambda),
-      {
-        authorizer,
-      },
-    );
+    todoIdResource.addMethod('GET', new apigateway.LambdaIntegration(lambdaStack.todoLambda), {
+      authorizer,
+    });
 
-    todoIdResource.addMethod(
-      'PUT',
-      new apigateway.LambdaIntegration(lambdaStack.todoLambda),
-      {
-        authorizer,
-      },
-    );
+    todoIdResource.addMethod('PUT', new apigateway.LambdaIntegration(lambdaStack.todoLambda), {
+      authorizer,
+    });
 
-    todoIdResource.addMethod(
-      'DELETE',
-      new apigateway.LambdaIntegration(lambdaStack.todoLambda),
-      {
-        authorizer,
-      },
-    );
+    todoIdResource.addMethod('DELETE', new apigateway.LambdaIntegration(lambdaStack.todoLambda), {
+      authorizer,
+    });
 
     // User API 리소스 생성
     const userResource = this.api.root.addResource('users');
     const userAuthResource = userResource.addResource('auth');
 
     // User API 메서드 생성
-    userResource.addMethod(
-      'GET',
-      new apigateway.LambdaIntegration(lambdaStack.userLambda),
-      {
-        authorizer,
-      },
-    );
+    userResource.addMethod('GET', new apigateway.LambdaIntegration(lambdaStack.userLambda), {
+      authorizer,
+    });
 
-    userResource.addMethod(
-      'POST',
-      new apigateway.LambdaIntegration(lambdaStack.userLambda),
-    );
+    userResource.addMethod('POST', new apigateway.LambdaIntegration(lambdaStack.userLambda));
 
-    userAuthResource.addMethod(
-      'POST',
-      new apigateway.LambdaIntegration(lambdaStack.userLambda),
-    );
+    userAuthResource.addMethod('POST', new apigateway.LambdaIntegration(lambdaStack.userLambda));
 
     // 스택 출력값 설정
     new cdk.CfnOutput(this, 'ApiEndpoint', {
@@ -114,4 +83,4 @@ export class ApiStack extends cdk.Stack {
       description: 'API Gateway 엔드포인트 URL',
     });
   }
-} 
+}

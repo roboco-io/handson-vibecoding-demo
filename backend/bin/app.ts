@@ -30,7 +30,7 @@ const lambdaStack = new LambdaStack(app, 'TodoAppLambdaStack', databaseStack, au
   },
 });
 
-const apiStack = new ApiStack(app, 'TodoAppApiStack', lambdaStack, authStack, {
+new ApiStack(app, 'TodoAppApiStack', lambdaStack, authStack, {
   env: {
     account: process.env.CDK_DEFAULT_ACCOUNT,
     region: process.env.CDK_DEFAULT_REGION,

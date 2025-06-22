@@ -1,6 +1,6 @@
 import { APIGatewayProxyEvent, APIGatewayProxyResult } from 'aws-lambda';
 
-export const handler = async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => {
+export const handler = async (_event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => {
   return {
     statusCode: 200,
     headers: {
@@ -10,4 +10,4 @@ export const handler = async (event: APIGatewayProxyEvent): Promise<APIGatewayPr
       message: 'User Lambda function is working!',
     }),
   };
-}; 
+};

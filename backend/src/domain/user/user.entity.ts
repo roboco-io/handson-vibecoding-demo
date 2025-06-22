@@ -54,4 +54,4 @@ export class User {
   public toJSON(): UserProps {
     return { ...this.props };
   }
-} 
+}

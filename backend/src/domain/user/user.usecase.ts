@@ -17,4 +17,4 @@ export interface UserUseCase {
   updateUser(input: UpdateUserInput): Promise<User>;
   deleteUser(id: string): Promise<void>;
   authenticateUser(email: string, password: string): Promise<{ user: User; token: string }>;
-} 
+}

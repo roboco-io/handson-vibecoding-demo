@@ -77,4 +77,4 @@ export class Todo {
   public toJSON(): TodoProps {
     return { ...this.props };
   }
-} 
+}

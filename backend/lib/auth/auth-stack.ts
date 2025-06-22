@@ -62,4 +62,4 @@ export class AuthStack extends cdk.Stack {
       description: 'Cognito User Pool Client ID',
     });
   }
-} 
+}

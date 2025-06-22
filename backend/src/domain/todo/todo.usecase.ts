@@ -21,4 +21,4 @@ export interface TodoUseCase {
   deleteTodo(id: string): Promise<void>;
   completeTodo(id: string): Promise<Todo>;
   uncompleteTodo(id: string): Promise<Todo>;
-} 
+}
