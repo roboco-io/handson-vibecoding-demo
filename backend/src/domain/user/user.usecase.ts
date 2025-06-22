@@ -13,7 +13,7 @@ export interface UpdateUserInput {
 
 export interface UserUseCase {
   createUser(input: CreateUserInput): Promise<User>;
-  getUser(id: string): Promise<User>;
+  getUser(id: string): Promise<User | null>;
   updateUser(input: UpdateUserInput): Promise<User>;
   deleteUser(id: string): Promise<void>;
   authenticateUser(email: string, password: string): Promise<{ user: User; token: string }>;

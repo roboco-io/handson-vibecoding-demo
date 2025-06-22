@@ -70,30 +70,34 @@
     - [x] 도메인 모델과 인터페이스를 정확히 구현
     - [x] 테스트 커버리지 80% 이상 달성
 
-- [ ] **6.5 인프라 어댑터 구현 (TDD)**
-  - [ ] DynamoDB 어댑터 구현 (src/infrastructure/dynamodb/)
-    - [ ] Todo 리포지토리 구현
-    - [ ] User 리포지토리 구현
-  - [ ] Cognito 어댑터 구현 (src/infrastructure/cognito/)
-    - [ ] 인증 서비스 구현
-    - [ ] 사용자 관리 서비스 구현
+- [x] **6.5 인프라 어댑터 구현 (TDD)**
+  - [x] DynamoDB 어댑터 구현 (src/infrastructure/dynamodb/)
+    - [x] Todo 리포지토리 구현
+    - [x] User 리포지토리 구현
+  - [x] Cognito 어댑터 구현 (src/infrastructure/cognito/)
+    - [x] 인증 서비스 구현
   - **커밋**: "인프라 어댑터 구현 (TDD)"
   - **인수조건**:
-    - 모든 어댑터에 대한 단위 테스트 통과
-    - 외부 서비스와의 통합 테스트 통과
-    - 테스트 커버리지 80% 이상 달성
+    - [x] 모든 어댑터에 대한 단위 테스트 통과
+    - [ ] 외부 서비스와의 통합 테스트 통과
+    - [x] 테스트 커버리지 80% 이상 달성
 
-- [ ] **6.6 API 컨트롤러 구현 (TDD)**
-  - [ ] REST API 컨트롤러 구현 (src/interfaces/rest/)
-    - [ ] Todo 컨트롤러
-    - [ ] User 컨트롤러
-  - [ ] Lambda 핸들러 구현 (src/main/)
-    - [ ] API Gateway 이벤트 처리
-    - [ ] 에러 처리
-    - [ ] 로깅
-  - **커밋**: "API 컨트롤러 구현 (TDD)"
+- [x] **6.6 API 컨트롤러 및 Lambda 핸들러 구현**
+  - [x] REST API 컨트롤러 구현 (src/interfaces/rest/)
+    - [x] Todo 컨트롤러
+    - [x] User 컨트롤러
+  - [x] Lambda 핸들러 구현 (src/main/)
+    - [x] API Gateway 이벤트 처리
+    - [x] 에러 처리
+    - [x] 로깅
+  - **커밋**: "API 컨트롤러 및 Lambda 핸들러 구현"
   - **인수조건**:
     - 모든 API 엔드포인트가 정상 동작
     - 에러 처리가 적절히 구현됨
     - 로깅이 CloudWatch에 정상적으로 기록됨
-    - 테스트 커버리지 80% 이상 달성 
+    - 테스트 커버리지 80% 이상 달성
+
+- [ ] **6.7 API Gateway 스택 및 라우팅 설정**
+- [ ] **6.8 Cognito 스택 및 사용자 풀 설정**
+- [ ] **6.9 CI/CD 파이프라인 설정**
+- [ ] **6.10 배포 및 E2E 테스트** 

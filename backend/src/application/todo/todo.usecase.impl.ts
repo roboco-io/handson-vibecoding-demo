@@ -18,12 +18,8 @@ export class TodoUseCaseImpl implements TodoUseCase {
     return todo;
   }
 
-  async getTodo(id: string): Promise<Todo> {
-    const todo = await this.todoRepository.findById(id);
-    if (!todo) {
-      throw new Error('Todo not found');
-    }
-    return todo;
+  async getTodo(id: string): Promise<Todo | null> {
+    return this.todoRepository.findById(id);
   }
 
   async getUserTodos(userId: string): Promise<Todo[]> {
@@ -32,6 +28,9 @@ export class TodoUseCaseImpl implements TodoUseCase {
 
   async updateTodo(input: UpdateTodoInput): Promise<Todo> {
     const todo = await this.getTodo(input.id);
+    if (!todo) {
+      throw new Error('Todo not found');
+    }
 
     if (input.title) {
       todo.update(input.title, input.description);
@@ -48,12 +47,18 @@ export class TodoUseCaseImpl implements TodoUseCase {
   }
 
   async deleteTodo(id: string): Promise<void> {
-    await this.getTodo(id); // Check if todo exists before deleting
+    const todo = await this.getTodo(id); // Check if todo exists before deleting
+    if (!todo) {
+      throw new Error('Todo not found');
+    }
     await this.todoRepository.delete(id);
   }
 
   async completeTodo(id: string): Promise<Todo> {
     const todo = await this.getTodo(id);
+    if (!todo) {
+      throw new Error('Todo not found');
+    }
     todo.complete();
     await this.todoRepository.save(todo);
     return todo;
@@ -61,6 +66,9 @@ export class TodoUseCaseImpl implements TodoUseCase {
 
   async uncompleteTodo(id: string): Promise<Todo> {
     const todo = await this.getTodo(id);
+    if (!todo) {
+      throw new Error('Todo not found');
+    }
     todo.uncomplete();
     await this.todoRepository.save(todo);
     return todo;

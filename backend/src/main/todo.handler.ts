@@ -1,11 +1,12 @@
 import 'source-map-support/register';
 import { APIGatewayProxyEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
-import { TodoController } from '@/interfaces/rest/todo.controller';
-import { TodoUseCaseImpl } from '@/application/todo/todo.usecase.impl';
-import { TodoRepositoryImpl } from '@/infrastructure/dynamodb/todo.repository.impl';
+import { TodoController } from '../interfaces/rest/todo.controller';
+import { TodoUseCaseImpl } from '../application/todo/todo.usecase.impl';
+import { TodoRepositoryImpl } from '../infrastructure/dynamodb/todo.repository.impl';
 import { DynamoDBClient } from '@aws-sdk/client-dynamodb';
 import { DynamoDBDocumentClient } from '@aws-sdk/lib-dynamodb';
 
+// Cold start optimization: initialize outside the handler
 const ddbClient = new DynamoDBClient({});
 const ddbDocClient = DynamoDBDocumentClient.from(ddbClient);
 const todoRepository = new TodoRepositoryImpl(ddbDocClient);
@@ -19,7 +20,7 @@ export const handler = async (
 ): Promise<APIGatewayProxyResult> => {
   const { httpMethod, path } = event;
 
-  // Router using regex
+  // Simple router
   if (httpMethod === 'POST' && path === '/todos') {
     return todoController.create(event);
   }

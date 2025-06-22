@@ -55,7 +55,7 @@ describe('TodoUseCase', () => {
   });
 
   describe('getTodo', () => {
-    it('ID로 Todo를 조회해야 한다', async () => {
+    it('ID로 Todo를 찾아 반환해야 한다', async () => {
       // given
       mockTodoRepository.findById.mockResolvedValue(testTodo);
 
@@ -68,12 +68,15 @@ describe('TodoUseCase', () => {
       expect(mockTodoRepository.findById).toHaveBeenCalledTimes(1);
     });
 
-    it('ID로 Todo를 찾지 못하면 에러를 던져야 한다', async () => {
+    it('ID로 Todo를 찾지 못하면 null을 반환해야 한다', async () => {
       // given
       mockTodoRepository.findById.mockResolvedValue(null);
 
-      // when & then
-      await expect(todoUseCase.getTodo('not-found-id')).rejects.toThrow('Todo not found');
+      // when
+      const result = await todoUseCase.getTodo('not-found-id');
+
+      // then
+      expect(result).toBeNull();
     });
   });
 
@@ -153,6 +156,40 @@ describe('TodoUseCase', () => {
       // when & then
       await expect(todoUseCase.updateTodo(updateData)).rejects.toThrow('Todo not found');
     });
+
+    it('빈 업데이트 데이터로 호출하면 기존 Todo를 반환해야 한다', async () => {
+      // given
+      const updateData = { id: 'test-id' };
+      mockTodoRepository.findById.mockResolvedValue(testTodo);
+      mockTodoRepository.save.mockResolvedValue(undefined);
+
+      // when
+      const updatedTodo = await todoUseCase.updateTodo(updateData);
+
+      // then
+      expect(updatedTodo).toEqual(testTodo);
+      expect(mockTodoRepository.save).toHaveBeenCalledWith(testTodo);
+    });
+
+    it('모든 필드를 한번에 업데이트해야 한다', async () => {
+      // given
+      const updateData = {
+        id: 'test-id',
+        title: 'Updated Title',
+        description: 'Updated Description',
+        completed: true,
+      };
+      mockTodoRepository.findById.mockResolvedValue(testTodo);
+      mockTodoRepository.save.mockResolvedValue(undefined);
+
+      // when
+      const updatedTodo = await todoUseCase.updateTodo(updateData);
+
+      // then
+      expect(updatedTodo.title).toBe(updateData.title);
+      expect(updatedTodo.description).toBe(updateData.description);
+      expect(updatedTodo.completed).toBe(updateData.completed);
+    });
   });
 
   describe('deleteTodo', () => {
@@ -175,6 +212,17 @@ describe('TodoUseCase', () => {
 
       // when & then
       await expect(todoUseCase.deleteTodo('not-found-id')).rejects.toThrow('Todo not found');
+    });
+
+    it('빈 문자열 ID로 삭제 시도하면 에러를 던져야 한다', async () => {
+      // when & then
+      await expect(todoUseCase.deleteTodo('')).rejects.toThrow();
+    });
+
+    it('null ID로 삭제 시도하면 에러를 던져야 한다', async () => {
+      // when & then
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      await expect(todoUseCase.deleteTodo(null as any)).rejects.toThrow();
     });
   });
 

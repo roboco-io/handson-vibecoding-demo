@@ -33,25 +33,27 @@ export class UserUseCaseImpl implements UserUseCase {
     return user;
   }
 
-  async getUser(id: string): Promise<User> {
-    const user = await this.userRepository.findById(id);
-    if (!user) {
-      throw new Error('User not found');
-    }
-    return user;
+  async getUser(id: string): Promise<User | null> {
+    return this.userRepository.findById(id);
   }
 
   async updateUser(input: UpdateUserInput): Promise<User> {
     const user = await this.getUser(input.id);
+    if (!user) {
+      throw new Error('User not found');
+    }
     if (input.name) {
       user.updateName(input.name);
-      await this.userRepository.save(user);
     }
+    await this.userRepository.save(user);
     return user;
   }
 
   async deleteUser(id: string): Promise<void> {
-    await this.getUser(id);
+    const user = await this.getUser(id);
+    if (!user) {
+      throw new Error('User not found');
+    }
     await this.userRepository.delete(id);
   }
 

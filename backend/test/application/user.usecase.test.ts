@@ -73,7 +73,7 @@ describe('UserUseCase', () => {
   });
 
   describe('getUser', () => {
-    it('ID로 사용자를 조회해야 한다', async () => {
+    it('ID로 사용자를 찾아 반환해야 한다', async () => {
       // given
       mockUserRepository.findById.mockResolvedValue(testUser);
 
@@ -85,12 +85,15 @@ describe('UserUseCase', () => {
       expect(mockUserRepository.findById).toHaveBeenCalledWith('test-id');
     });
 
-    it('사용자를 찾지 못하면 에러를 던져야 한다', async () => {
+    it('ID로 사용자를 찾지 못하면 null을 반환해야 한다', async () => {
       // given
       mockUserRepository.findById.mockResolvedValue(null);
 
-      // when & then
-      await expect(userUseCase.getUser('not-found-id')).rejects.toThrow('User not found');
+      // when
+      const result = await userUseCase.getUser('not-found-id');
+
+      // then
+      expect(result).toBeNull();
     });
   });
 
@@ -120,7 +123,23 @@ describe('UserUseCase', () => {
 
       // then
       expect(updatedUser.name).toBe(originalName);
-      expect(mockUserRepository.save).not.toHaveBeenCalled();
+    });
+
+    it('업데이트할 사용자를 찾지 못하면 에러를 던져야 한다', async () => {
+      // given
+      const updateData = { id: 'not-found-id', name: 'Updated Name' };
+      mockUserRepository.findById.mockResolvedValue(null);
+
+      // when & then
+      await expect(userUseCase.updateUser(updateData)).rejects.toThrow('User not found');
+    });
+
+    it('빈 문자열 ID로 업데이트 시도하면 에러를 던져야 한다', async () => {
+      // given
+      const updateData = { id: '', name: 'Updated Name' };
+
+      // when & then
+      await expect(userUseCase.updateUser(updateData)).rejects.toThrow();
     });
   });
 
@@ -135,6 +154,19 @@ describe('UserUseCase', () => {
 
       // then
       expect(mockUserRepository.delete).toHaveBeenCalledWith('test-id');
+    });
+
+    it('삭제할 사용자를 찾지 못하면 에러를 던져야 한다', async () => {
+      // given
+      mockUserRepository.findById.mockResolvedValue(null);
+
+      // when & then
+      await expect(userUseCase.deleteUser('not-found-id')).rejects.toThrow('User not found');
+    });
+
+    it('빈 문자열 ID로 삭제 시도하면 에러를 던져야 한다', async () => {
+      // when & then
+      await expect(userUseCase.deleteUser('')).rejects.toThrow();
     });
   });
 

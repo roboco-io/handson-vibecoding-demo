@@ -15,7 +15,7 @@ export interface UpdateTodoInput {
 
 export interface TodoUseCase {
   createTodo(input: CreateTodoInput): Promise<Todo>;
-  getTodo(id: string): Promise<Todo>;
+  getTodo(id: string): Promise<Todo | null>;
   getUserTodos(userId: string): Promise<Todo[]>;
   updateTodo(input: UpdateTodoInput): Promise<Todo>;
   deleteTodo(id: string): Promise<void>;

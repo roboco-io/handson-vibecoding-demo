@@ -18,6 +18,10 @@
     "experimentalDecorators": true,
     "strictPropertyInitialization": false,
     "types": ["node"],
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    },
     "outDir": "dist",
     "rootDir": "."
   },
