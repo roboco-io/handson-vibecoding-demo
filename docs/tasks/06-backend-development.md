@@ -30,30 +30,30 @@
     - [x] 인터페이스가 Clean Architecture 원칙을 준수
     - [x] 테스트 커버리지 80% 이상 달성
 
-- [ ] **6.3 CDK 스택 구현**
-  - [ ] DatabaseStack 구현 (lib/database/)
-    - [ ] DynamoDB 테이블 정의
-    - [ ] GSI 설정
-    - [ ] TTL 설정
-    - [ ] 자동 스케일링 설정
-  - [ ] AuthStack 구현 (lib/auth/)
-    - [ ] Cognito User Pool 설정
-    - [ ] App Client 설정
-    - [ ] OAuth 설정
-  - [ ] LambdaStack 구현 (lib/lambda/)
-    - [ ] Lambda 함수 정의
-    - [ ] 환경 변수 설정
-    - [ ] IAM 역할 설정
-  - [ ] ApiStack 구현 (lib/api/)
-    - [ ] API Gateway 설정
-    - [ ] CORS 설정
-    - [ ] 인증 설정
+- [x] **6.3 CDK 스택 구현**
+  - [x] DatabaseStack 구현 (lib/database/)
+    - [x] DynamoDB 테이블 정의
+    - [x] GSI 설정
+    - [x] TTL 설정
+    - [x] 자동 스케일링 설정
+  - [x] AuthStack 구현 (lib/auth/)
+    - [x] Cognito User Pool 설정
+    - [x] App Client 설정
+    - [x] OAuth 설정
+  - [x] LambdaStack 구현 (lib/lambda/)
+    - [x] Lambda 함수 정의
+    - [x] 환경 변수 설정
+    - [x] IAM 역할 설정
+  - [x] ApiStack 구현 (lib/api/)
+    - [x] API Gateway 설정
+    - [x] CORS 설정
+    - [x] 인증 설정
   - **커밋**: "CDK 스택 구현 (TDD)"
   - **인수조건**:
-    - CDK synth 명령이 정상 동작
-    - 모든 스택이 의존성 관계를 올바르게 설정
-    - IAM 권한이 최소 권한 원칙을 준수
-    - 보안 그룹이 적절히 구성됨
+    - [x] CDK synth 명령이 정상 동작
+    - [x] 모든 스택이 의존성 관계를 올바르게 설정
+    - [x] IAM 권한이 최소 권한 원칙을 준수
+    - [x] 보안 그룹이 적절히 구성됨
 
 - [ ] **6.4 유스케이스 구현 (TDD)**
   - [ ] Todo 유스케이스 구현 (src/application/)
