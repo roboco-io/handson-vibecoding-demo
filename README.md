@@ -1,3 +1,5 @@
+> 현재 이 리포지토리는 https://github.com/Hands-On-Vibe-Coding/handson-vibecoding-demo 으로 옮겨져서 유지보수되고 있습니다.
+
 # Vibecoding TODO App Monorepo
 
 이 프로젝트는 모던 웹 개발 및 인프라 자동화 베스트 프랙티스를 반영한 TODO 앱 모노레포입니다.
